@@ -1,0 +1,16 @@
+{
+  "project": "ai-skills",
+  "spec": "harness/specs/2026-07-22-ai-skills-registry-design.md",
+  "features": [
+    { "id": "AIS-001", "phase": 1, "title": "Repo bootstrap: git init, harness scaffold, spec committed, GitHub private->public repo created (confirm repo name first)", "status": "pending" },
+    { "id": "AIS-002", "phase": 1, "title": "Migrate & convert skills per spec §7 (except worklog, update-tags): frontmatter + standard footer + neutrality pass", "status": "pending" },
+    { "id": "AIS-003", "phase": 1, "title": "Write README protocol (INSTALL/UPDATE for AI agents, verbatim publish-line, verify checklists)", "status": "pending" },
+    { "id": "AIS-004", "phase": 1, "title": "Registry generator + first registry.json; acceptance: real UC1 install on this machine with Claude Code", "status": "pending" },
+    { "id": "AIS-005", "phase": 2, "title": "Provenance schema + full UPDATE protocol (commit-log preview, local_modified 3-way ask)", "status": "pending" },
+    { "id": "AIS-006", "phase": 2, "title": "CONTRIBUTING.md (review checklist, Co-Authored-By rule, markdown-only policy) + branch protection", "status": "pending" },
+    { "id": "AIS-007", "phase": 2, "title": "CI validate.yml: registry sync, frontmatter/footer, no personal paths, no executables", "status": "pending" },
+    { "id": "AIS-008", "phase": 3, "title": "skill-publisher meta-skill (ask share/publish, audit, normalize, regenerate registry, push/PR)", "status": "pending" },
+    { "id": "AIS-009", "phase": 3, "title": "Generalize worklog (split personal Notion config from logic) and publish", "status": "pending" },
+    { "id": "AIS-010", "phase": 3, "title": "Test matrix: UC1-UC4 on both Claude Code and Codex, results recorded in harness/notes", "status": "pending" }
+  ]
+}
