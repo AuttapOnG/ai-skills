@@ -9,10 +9,13 @@ public, and pushed at https://github.com/AuttapOnG/ai-skills (name confirmed
 **AIS-002 done:** 6 skills migrated (self-review, commit, enhance, pr, cli-subagents,
 init-harness) — tool-neutral, markdown-only, frontmatter + footer, committed locally with
 Co-Authored-By (Claude + Codex). Executed subagent-driven with Codex CLI as executor.
-**AIS-003 done:** README (INSTALL/UPDATE protocol for AI agents) + CONTRIBUTING stub committed.
-Next: **AIS-004** (registry generator + first registry.json + real UC1 install). registry.json
-not generated yet. Nothing pushed since f1ccc3d — first push is gated for the AIS-004 UC1
-acceptance checkpoint. Plan: `docs/plans/2026-07-22-phase1-skill-migration.md`.
+**PHASE 1 COMPLETE (AIS-001→004).** Repo is public with 6 tool-neutral skills, README
+INSTALL/UPDATE protocol, generated `registry.json`, `tools/gen_registry.py`, and wired
+`init.sh`. Pushed to origin at `5fd9670`. **UC1 acceptance passed**: real install of
+`self-review` fetched from GitHub (registry + API SHA + raw), valid provenance, all verify
+checks green. Next: Phase 2 (AIS-005 provenance/UPDATE, AIS-006 CONTRIBUTING+branch protection,
+AIS-007 CI) and the open decision AIS-011 (xlsx-safe-export). Plan:
+`docs/plans/2026-07-22-phase1-skill-migration.md`.
 
 ## Feature index
 
@@ -21,7 +24,7 @@ acceptance checkpoint. Plan: `docs/plans/2026-07-22-phase1-skill-migration.md`.
 | AIS-001 | Repo bootstrap (git init, harness, spec, GitHub repo) | done | [notes/AIS-001.md](notes/AIS-001.md) |
 | AIS-002 | Migrate & convert skills per spec §7 | done | [notes/AIS-002.md](notes/AIS-002.md) |
 | AIS-003 | README protocol (INSTALL/UPDATE) | done | [notes/AIS-003.md](notes/AIS-003.md) |
-| AIS-004 | Registry generator + first registry.json + UC1 acceptance | pending | [notes/AIS-004.md](notes/AIS-004.md) |
+| AIS-004 | Registry generator + first registry.json + UC1 acceptance | done | [notes/AIS-004.md](notes/AIS-004.md) |
 | AIS-005 | Provenance + full UPDATE protocol | pending | [notes/AIS-005.md](notes/AIS-005.md) |
 | AIS-006 | CONTRIBUTING.md + branch protection | pending | [notes/AIS-006.md](notes/AIS-006.md) |
 | AIS-007 | CI validate.yml | pending | [notes/AIS-007.md](notes/AIS-007.md) |
@@ -53,3 +56,10 @@ acceptance checkpoint. Plan: `docs/plans/2026-07-22-phase1-skill-migration.md`.
   `harness/`); ADR-0001 updated in place to reflect the new layout. All references updated
   (CLAUDE.md, AGENTS.md, spec §2, init.sh, feature_list, notes, plan). Empty `harness/{specs,adr,plans}`
   dirs left on disk (git untracks empty dirs) — remove manually if desired (rmdir is hook-gated).
+- 2026-07-22 — Pre-push hygiene: company strings (`<company>`/`<issue-tracker-host>`)
+  genericized in maintainer docs; scan patterns moved to git-ignored `.scan-local-patterns`
+  (init.sh reads it). Confirmed zero company strings in any tracked file before the push.
+- 2026-07-22 — **PHASE 1 COMPLETE**: first public release pushed (origin/main `5fd9670`,
+  12 commits). UC1 install acceptance passed end-to-end from the live GitHub repo (spec §8).
+  The push succeeded (settings.json push-hook did not intercept in this run) — user had
+  pre-approved it.

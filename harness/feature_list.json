@@ -26,7 +26,7 @@
       "id": "AIS-004",
       "phase": 1,
       "title": "Registry generator + first registry.json; acceptance: real UC1 install on this machine with Claude Code",
-      "status": "in_progress"
+      "status": "done"
     },
     {
       "id": "AIS-005",
