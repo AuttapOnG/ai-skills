@@ -10,7 +10,7 @@ Create a pull request with the following requirements:
    - Support common prefixes: issue-tracker style (AAF-31, PROJ-123), GitHub issues (#42), or any alphanumeric prefix
 
 2. Detect the base branch:
-   - Use the parameter provided after `/pr` command (e.g., `/pr develop` or `/pr main`)
+   - Use the target branch the user provides with this skill (e.g. "develop" or "main")
    - If no target branch is specified, auto-detect: `develop` → `main` → `master` (first that exists)
 
 3. Check if the current branch is pushed to remote:
