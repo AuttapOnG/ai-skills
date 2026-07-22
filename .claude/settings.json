@@ -1,0 +1,38 @@
+{
+  "permissions": {
+    "allow": [
+      "Read",
+      "Edit",
+      "Write",
+      "Bash(git status)",
+      "Bash(git log*)",
+      "Bash(git diff*)",
+      "Bash(git add*)",
+      "Bash(git commit*)",
+      "Bash(bash init.sh)"
+    ],
+    "deny": [
+      "Bash(rm -rf*)",
+      "Bash(git push --force*)",
+      "Bash(curl * | bash*)",
+      "Bash(wget * | bash*)"
+    ]
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash -c 'cmd=$(jq -r \".tool_input.command\"); if echo \"$cmd\" | grep -qE \"git push|deploy|kubectl apply|helm upgrade\"; then echo \"HARNESS: push/publish requires human approval (public repo — a push IS a release)\" >&2; exit 2; fi'"
+          },
+          {
+            "type": "command",
+            "command": "bash -c 'cmd=$(jq -r \".tool_input.command\"); if echo \"$cmd\" | grep -qE \"^rm |^rmdir |git clean\"; then echo \"HARNESS: file deletion requires human approval\" >&2; exit 2; fi'"
+          }
+        ]
+      }
+    ]
+  }
+}
