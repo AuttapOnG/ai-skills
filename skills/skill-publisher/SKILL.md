@@ -37,8 +37,9 @@ applies to an incoming contribution:
 - [ ] **Markdown only** — one `SKILL.md` (+ optional markdown support files). No executable
   scripts, binaries, or tool-specific config files. Move runnable snippets into fenced code
   blocks.
-- [ ] **No secrets / personal / internal data** — no tokens, no absolute or home paths
-  (`/Users/…`, `C:\…`, `~/.tool/…`), no company-internal names, URLs, or hostnames.
+- [ ] **No secrets / personal / internal data** — no tokens, no absolute filesystem paths or
+  tool-home directories (macOS/Linux home dirs, Windows drive paths, `~/`-rooted tool dirs),
+  no company-internal names, URLs, or hostnames.
 - [ ] **Tool-neutral** — discovery ladders instead of hardcoded tool names or paths as
   requirements; named tools appear only as clearly-labeled examples.
 - [ ] **No dangerous instructions** — nothing that exfiltrates data, reaches outside the
