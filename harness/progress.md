@@ -93,3 +93,8 @@ residual-risk note on force-pushed-away objects (see git-identity entries below)
 - 2026-07-22 — **PROJECT COMPLETE.** AIS-006 branch protection set on `main` (Standard: PR + 1
   review + `validate` check for non-owners; owner/admin bypass). AIS-011 decided: **skip**
   xlsx-safe-export (stays local; markdown-only v1 unchanged). All 11 features done.
+- 2026-07-22 — Extended hygiene (user request): removed ALL remaining third-party product-name
+  references (issue-tracker / wiki / team-chat tooling) from the maintainer docs across the FULL
+  history — genericized to neutral terms — so there is zero reference to the maintainer's original
+  corporate toolchain. Full-history tree-filter scrub + force-push; verified zero such references
+  in any reachable commit.
