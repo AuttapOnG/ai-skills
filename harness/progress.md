@@ -9,10 +9,10 @@ public, and pushed at https://github.com/AuttapOnG/ai-skills (name confirmed
 **AIS-002 done:** 6 skills migrated (self-review, commit, enhance, pr, cli-subagents,
 init-harness) — tool-neutral, markdown-only, frontmatter + footer, committed locally with
 Co-Authored-By (Claude + Codex). Executed subagent-driven with Codex CLI as executor.
-Next: **AIS-003** (README INSTALL/UPDATE protocol) then **AIS-004** (registry generator +
-first registry.json + real UC1 install). registry.json not generated yet. Nothing pushed
-since f1ccc3d — push is gated for the AIS-004 UC1 acceptance checkpoint.
-Plan: `harness/plans/2026-07-22-phase1-skill-migration.md`.
+**AIS-003 done:** README (INSTALL/UPDATE protocol for AI agents) + CONTRIBUTING stub committed.
+Next: **AIS-004** (registry generator + first registry.json + real UC1 install). registry.json
+not generated yet. Nothing pushed since f1ccc3d — first push is gated for the AIS-004 UC1
+acceptance checkpoint. Plan: `harness/plans/2026-07-22-phase1-skill-migration.md`.
 
 ## Feature index
 
@@ -20,7 +20,7 @@ Plan: `harness/plans/2026-07-22-phase1-skill-migration.md`.
 |---|---|---|---|
 | AIS-001 | Repo bootstrap (git init, harness, spec, GitHub repo) | done | [notes/AIS-001.md](notes/AIS-001.md) |
 | AIS-002 | Migrate & convert skills per spec §7 | done | [notes/AIS-002.md](notes/AIS-002.md) |
-| AIS-003 | README protocol (INSTALL/UPDATE) | pending | [notes/AIS-003.md](notes/AIS-003.md) |
+| AIS-003 | README protocol (INSTALL/UPDATE) | done | [notes/AIS-003.md](notes/AIS-003.md) |
 | AIS-004 | Registry generator + first registry.json + UC1 acceptance | pending | [notes/AIS-004.md](notes/AIS-004.md) |
 | AIS-005 | Provenance + full UPDATE protocol | pending | [notes/AIS-005.md](notes/AIS-005.md) |
 | AIS-006 | CONTRIBUTING.md + branch protection | pending | [notes/AIS-006.md](notes/AIS-006.md) |
