@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-22T05:53:46Z",
+  "generated_at": "2026-07-22T06:15:35Z",
   "skills": [
     {
       "name": "cli-subagents",
@@ -41,6 +41,12 @@
       "name": "skill-publisher",
       "description": "Use after creating or substantially improving a skill to offer publishing it to a shared skills registry — ask first, then audit for safety and neutrality, normalize frontmatter and footer, regenerate the registry, and open the change as a push or pull request with co-author credit.",
       "path": "skills/skill-publisher",
+      "updated": "2026-07-22"
+    },
+    {
+      "name": "worklog",
+      "description": "Scan git logs plus AI-assistant session logs across your repos and create dated worklog entries in your notes system (Notion shown as the example). Supports a \"sweep\" mode to find date gaps and fill missing entries.",
+      "path": "skills/worklog",
       "updated": "2026-07-22"
     }
   ]
