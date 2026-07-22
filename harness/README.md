@@ -4,8 +4,7 @@ Work-control memory for developing the ai-skills registry.
 
 ## Files
 
-- `specs/` — approved designs. Start with `2026-07-22-ai-skills-registry-design.md` — the single source of truth for this project. New specs from `SPEC-TEMPLATE.md`.
-- `adr/` — architecture decision records (start at `0001-harness-init.md`).
+- **Design docs live under the top-level `docs/`** (sibling of `harness/`): `docs/specs/` (approved designs — start with `2026-07-22-ai-skills-registry-design.md`, the single source of truth; new specs from `SPEC-TEMPLATE.md`), `docs/adr/` (decision records, from `0001-harness-init.md`), `docs/plans/` (implementation plans).
 - `feature_list.json` — the implementation queue. Every unit of work is a feature with an ID (AIS-NNN), phase, and status (`pending` / `in_progress` / `done`). Single source of truth for what is done and what is next.
 - `progress.md` — slim, bounded memory with exactly three sections: **Current State**, **Feature index**, **Cross-cutting decisions & events**.
 - `notes/AIS-NNN.md` — one note file per feature: decisions, gotchas, test results.

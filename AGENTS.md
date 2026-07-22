@@ -10,7 +10,7 @@
 2. Read `harness/progress.md` (Current State + Feature index)
 3. Load the feature you are working on from `harness/feature_list.json`
    and its note `harness/notes/AIS-NNN.md`
-4. Load the approved spec: `harness/specs/2026-07-22-ai-skills-registry-design.md`
+4. Load the approved spec: `docs/specs/2026-07-22-ai-skills-registry-design.md`
    — single source of truth.
 
 ## Rules (MEDIUM AUTONOMY)

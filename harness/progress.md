@@ -12,7 +12,7 @@ Co-Authored-By (Claude + Codex). Executed subagent-driven with Codex CLI as exec
 **AIS-003 done:** README (INSTALL/UPDATE protocol for AI agents) + CONTRIBUTING stub committed.
 Next: **AIS-004** (registry generator + first registry.json + real UC1 install). registry.json
 not generated yet. Nothing pushed since f1ccc3d — first push is gated for the AIS-004 UC1
-acceptance checkpoint. Plan: `harness/plans/2026-07-22-phase1-skill-migration.md`.
+acceptance checkpoint. Plan: `docs/plans/2026-07-22-phase1-skill-migration.md`.
 
 ## Feature index
 
@@ -46,3 +46,10 @@ acceptance checkpoint. Plan: `harness/plans/2026-07-22-phase1-skill-migration.md
   executor; ~84k tokens on Codex's quota). All leak/gate checks clean; `pr` company URL and
   `commit` co-author contradiction fixed. xlsx-safe-export deferred → AIS-011 opened.
   Nothing pushed (still f1ccc3d on origin) — first push is the AIS-004 UC1 checkpoint.
+- 2026-07-22 — **Structure realigned to the init-harness skill's standard layout** (user
+  decision): design docs moved `harness/{specs,adr,plans}` → top-level `docs/{specs,adr,plans}`
+  via `git mv`; `harness/` now holds only work-control (feature_list, progress, notes, evals,
+  traces). This **reverses ADR-0001 decision #2** (which had deliberately kept specs/ADRs under
+  `harness/`); ADR-0001 updated in place to reflect the new layout. All references updated
+  (CLAUDE.md, AGENTS.md, spec §2, init.sh, feature_list, notes, plan). Empty `harness/{specs,adr,plans}`
+  dirs left on disk (git untracks empty dirs) — remove manually if desired (rmdir is hook-gated).

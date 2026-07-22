@@ -24,10 +24,14 @@ github.com/<you>/ai-skills        (public · name confirmed at creation; proposa
 ├── .github/workflows/validate.yml   ← CI checks on every PR (§6.3)
 ├── skills/
 │   └── <name>/SKILL.md (+support files)   ← frontmatter + standard footer (§4.3)
-└── harness/               ← maintainer-only, never installed
+├── docs/                  ← maintainer-only design docs, never installed
+│   ├── specs/    ← this document + future designs
+│   ├── adr/      ← architecture decision records
+│   └── plans/    ← implementation plans
+└── harness/               ← maintainer-only work-control memory, never installed
     ├── README.md  feature_list.json  progress.md
     ├── notes/     ← per-feature notes (AIS-001, ...)
-    └── specs/     ← this document + future designs
+    └── evals/  traces/     ← eval scaffolds + observability stub
 ```
 
 ## §3 Use cases (summary)

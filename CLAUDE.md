@@ -11,7 +11,7 @@ At the start of every session:
 2. Read `harness/progress.md` (Current State + Feature index)
 3. Load the feature you are working on: its entry in `harness/feature_list.json`
    and its note file `harness/notes/AIS-NNN.md`
-4. Load the approved spec: `harness/specs/2026-07-22-ai-skills-registry-design.md`
+4. Load the approved spec: `docs/specs/2026-07-22-ai-skills-registry-design.md`
    — it is the single source of truth for this project.
 
 ## Constraints (MEDIUM AUTONOMY)
@@ -45,7 +45,7 @@ and what is next. Follow the update discipline in `harness/README.md`:
   silently expand scope.
 
 ## Feature Workflow
-New work follows: spec in `harness/specs/` (approved by the human) → feature
+New work follows: spec in `docs/specs/` (approved by the human) → feature
 entries in `harness/feature_list.json` → implementation → verification against
 acceptance criteria → commit.
 

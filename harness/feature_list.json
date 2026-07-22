@@ -2,7 +2,7 @@
   "project": "ai-skills",
   "version": "0.1",
   "product_direction": "Public GitHub registry of AI-tool-neutral skills that any AI agent installs/updates by reading the repo protocol — no clone, no scripts, no symlinks.",
-  "spec": "harness/specs/2026-07-22-ai-skills-registry-design.md",
+  "spec": "docs/specs/2026-07-22-ai-skills-registry-design.md",
   "features": [
     {
       "id": "AIS-001",
@@ -26,7 +26,7 @@
       "id": "AIS-004",
       "phase": 1,
       "title": "Registry generator + first registry.json; acceptance: real UC1 install on this machine with Claude Code",
-      "status": "pending"
+      "status": "in_progress"
     },
     {
       "id": "AIS-005",

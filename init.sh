@@ -50,8 +50,8 @@ if [ "$UNCOMMITTED" -gt 0 ]; then
 fi
 
 # 5. Active spec pointer
-echo "--- Specs (harness/specs/) ---"
-ls harness/specs/*.md 2>/dev/null || echo "No specs found"
+echo "--- Specs (docs/specs/) ---"
+ls docs/specs/*.md 2>/dev/null || echo "No specs found"
 
 echo ""
 echo "=== Session ready — read harness/progress.md next ==="

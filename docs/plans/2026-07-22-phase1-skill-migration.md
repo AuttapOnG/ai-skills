@@ -17,7 +17,7 @@ in Phase 2.
 
 **Tech Stack:** Markdown + JSON only for shipped skills. Maintainer tooling: bash (`init.sh`),
 Python 3 stdlib (`tools/gen_registry.py` — **no new deps**). Source of truth = spec
-`harness/specs/2026-07-22-ai-skills-registry-design.md`.
+`docs/specs/2026-07-22-ai-skills-registry-design.md`.
 
 ## Global Constraints
 

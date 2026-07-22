@@ -26,11 +26,13 @@ Deviations from the default init-harness mapping, chosen deliberately:
    API access, and the user chose not to gate network calls. Public-repo
    hygiene is enforced by init.sh scans + CI (AIS-007) instead of blanket
    network denial.
-2. **Specs live in `harness/specs/`, ADRs in `harness/adr/`** (not `docs/`):
-   preserves this project's pre-existing convention (spec §2) and keeps all
-   maintainer material under one visible `harness/` directory.
+2. **Design docs live under top-level `docs/`** (`docs/specs/`, `docs/adr/`,
+   `docs/plans/`), matching the init-harness skill's standard layout; `harness/`
+   holds only work-control memory (feature_list.json, progress.md, notes/,
+   evals/, traces/). *(Updated 2026-07-22 — this reverses the initial choice to
+   keep specs/ADRs under `harness/`; see progress.md cross-cutting log.)*
 3. **No example-spec.md**: a real approved spec already exists
-   (`harness/specs/2026-07-22-ai-skills-registry-design.md`) and serves as
+   (`docs/specs/2026-07-22-ai-skills-registry-design.md`) and serves as
    the example.
 4. **Existing feature IDs AIS-001…010 preserved**; harness initialization is
    recorded as part of AIS-001 (repo bootstrap), now `in_progress`.
