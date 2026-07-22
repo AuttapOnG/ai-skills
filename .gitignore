@@ -5,8 +5,13 @@ Thumbs.db
 .idea/
 .vscode/
 
-# Claude Code local-only files (never publish)
+# AI tools' local-only state (never publish)
 .claude/settings.local.json
+.codex/
+.gemini/
+.aider*
+.cursor/
+.copilot/
 
 # Scratch files agents may create during long tasks
 WORKING_STATE.md
