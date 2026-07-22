@@ -91,8 +91,8 @@
     {
       "id": "AIS-015",
       "phase": 4,
-      "title": "Prevent skill\u2194harness drift \u2014 Layer 1: teach skill-publisher to update the project's work-control memory when the target repo has one (guarded/tool-neutral: skip if no harness). Closes the self-publish path at source. Requires republish (push) \u2192 gated on user approval.",
-      "status": "in_progress"
+      "title": "Prevent skill\u2194harness drift \u2014 Layer 1: teach skill-publisher to update the project's work-control memory when the target repo has one (guarded/tool-neutral: skip if no harness). Closes the self-publish path at source. Republished to main via PR #3 (rebase-merge, commit 4b349d0).",
+      "status": "done"
     },
     {
       "id": "AIS-016",

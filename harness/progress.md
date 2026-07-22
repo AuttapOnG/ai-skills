@@ -2,7 +2,8 @@
 
 ## Current State
 
-**v1 COMPLETE (AIS-001→011); + skill-updater added post-v1 as AIS-012 & AIS-013 (both done).**
+**v1 COMPLETE (AIS-001→011); phase-4 follow-ups AIS-012→016 all done & live on main.**
+(skill-updater backfill + skill↔harness drift prevention, landed via PR #3.)
 Public repo live at https://github.com/AuttapOnG/ai-skills with **9** tool-neutral, markdown-only
 skills, generated `registry.json`, README INSTALL/UPDATE protocol, full CONTRIBUTING, CI
 (`validate`, green), branch protection on `main`, and `tools/gen_registry.py`. Clean git identity
@@ -14,9 +15,9 @@ skills, generated `registry.json`, README INSTALL/UPDATE protocol, full CONTRIBU
 - AIS-011: xlsx-safe-export → decided SKIP (stays local; markdown-only v1 stands).
 - Phase 4 (post-v1, AIS-012→013): skill-updater meta-skill — base UPDATE/UC2 flow (AIS-012)
   + discover-new-skills enhancement (AIS-013). Landed via PR #1/#2, backfilled to harness.
-- Phase 4 (AIS-014→016): **skill↔harness drift prevention** (3 layers). AIS-014 init.sh parity
-  guard ✓ + AIS-016 CONTRIBUTING note ✓ done; **AIS-015** (skill-publisher writes the work-control
-  entry) — SKILL.md edited & verified locally, **in_progress pending republish/push**.
+- Phase 4 (AIS-014→016): **skill↔harness drift prevention** — all 3 layers done & live on main
+  (PR #3): AIS-014 init.sh parity guard, AIS-016 CONTRIBUTING note, AIS-015 skill-publisher
+  work-control step (republished via the merge).
 
 Possible follow-ups (not committed): README polish from the Codex test (AIS-010 note), and the
 residual-risk note on force-pushed-away objects (see git-identity entries below).
@@ -39,7 +40,7 @@ residual-risk note on force-pushed-away objects (see git-identity entries below)
 | AIS-012 | skill-updater meta-skill (base UPDATE/UC2 flow) | done | [notes/AIS-012.md](notes/AIS-012.md) |
 | AIS-013 | skill-updater: discover skills new in the registry | done | [notes/AIS-013.md](notes/AIS-013.md) |
 | AIS-014 | Drift prevention L2: init.sh skill↔harness parity guard | done | [notes/AIS-014.md](notes/AIS-014.md) |
-| AIS-015 | Drift prevention L1: skill-publisher updates work-control memory | in_progress | [notes/AIS-015.md](notes/AIS-015.md) |
+| AIS-015 | Drift prevention L1: skill-publisher updates work-control memory | done | [notes/AIS-015.md](notes/AIS-015.md) |
 | AIS-016 | Drift prevention L3: CONTRIBUTING maintainer work-tracking note | done | [notes/AIS-016.md](notes/AIS-016.md) |
 
 ## Cross-cutting decisions & events
@@ -129,3 +130,9 @@ residual-risk note on force-pushed-away objects (see git-identity entries below)
   CONTRIBUTING now states maintainers record merged skills in `harness/` + a review-checklist item.
   Chose **init.sh over public CI** for enforcement: a CI parity check would fail external PRs that
   correctly don't touch the private harness.
+- 2026-07-22 — **AIS-012→016 landed on main via PR #3** (rebase-merge, keeping the two atomic
+  commits `dcd2643` backfill + `4b349d0` drift-prevention; CI `validate` green). Branch protection
+  required 1 review — merged with the **owner/admin bypass** (solo maintainer can't self-approve),
+  same as #1/#2. skill-publisher is now republished on public main → **AIS-015 done**; all phase-4
+  follow-ups complete. Note: pushes are gated by the settings.json push-hook + the auto-mode
+  classifier — the branch push and the PR merge were both performed by the human.
