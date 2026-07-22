@@ -57,6 +57,28 @@ else
   echo "INFO: registry.json not created yet (Phase 1 pending)"
 fi
 
+# 3b. Skill <-> harness parity (every skill must be tracked by the work-control memory)
+#     A skill can land via any path (a merged PR, a direct commit) without a feature entry —
+#     which is exactly how it drifts. Word-boundary grep across ALL of harness/ (not just
+#     feature_list.json) so batch features that name their skills only in a note still count.
+echo "--- Skill/harness parity ---"
+if [ -d "skills" ] && [ -f "harness/feature_list.json" ]; then
+  UNTRACKED=""
+  for d in skills/*/; do
+    [ -d "$d" ] || continue
+    n=$(basename "$d")
+    grep -rqw "$n" harness/ 2>/dev/null || UNTRACKED="$UNTRACKED $n"
+  done
+  if [ -n "$UNTRACKED" ]; then
+    echo "WARNING: skill(s) not referenced anywhere in harness/ — add a feature entry (see harness/README.md):"
+    for n in $UNTRACKED; do echo "  - $n"; done
+  else
+    echo "OK: every skill is tracked in harness/"
+  fi
+else
+  echo "INFO: skills/ or harness/feature_list.json missing — parity check skipped"
+fi
+
 # 4. Git status
 echo "--- Git status ---"
 git status --short
