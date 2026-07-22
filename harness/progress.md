@@ -2,16 +2,18 @@
 
 ## Current State
 
-**PROJECT COMPLETE — all 11 features done.** Public repo live at
-https://github.com/AuttapOnG/ai-skills with 8 tool-neutral, markdown-only skills, generated
-`registry.json`, README INSTALL/UPDATE protocol, full CONTRIBUTING, CI (`validate`, green),
-branch protection on `main`, and `tools/gen_registry.py`. Clean git identity + history
-(personal email; no company tokens anywhere in reachable history).
+**v1 COMPLETE (AIS-001→011); + skill-updater added post-v1 as AIS-012 & AIS-013 (both done).**
+Public repo live at https://github.com/AuttapOnG/ai-skills with **9** tool-neutral, markdown-only
+skills, generated `registry.json`, README INSTALL/UPDATE protocol, full CONTRIBUTING, CI
+(`validate`, green), branch protection on `main`, and `tools/gen_registry.py`. Clean git identity
++ history (personal email; no company tokens anywhere in reachable history).
 - Phase 1 (AIS-001→004): repo, skills, README, registry, UC1 install acceptance (live).
 - Phase 2 (AIS-005→007): UC2 update acceptance (live), CI, CONTRIBUTING + branch protection.
 - Phase 3 (AIS-008→010): skill-publisher, generalized worklog, cross-tool test matrix
   (protocol verified tool-neutral via a real Codex UC1 run).
 - AIS-011: xlsx-safe-export → decided SKIP (stays local; markdown-only v1 stands).
+- Phase 4 (post-v1, AIS-012→013): skill-updater meta-skill — base UPDATE/UC2 flow (AIS-012)
+  + discover-new-skills enhancement (AIS-013). Landed via PR #1/#2, backfilled to harness.
 
 Possible follow-ups (not committed): README polish from the Codex test (AIS-010 note), and the
 residual-risk note on force-pushed-away objects (see git-identity entries below).
@@ -31,6 +33,8 @@ residual-risk note on force-pushed-away objects (see git-identity entries below)
 | AIS-009 | Generalize worklog and publish | done | [notes/AIS-009.md](notes/AIS-009.md) |
 | AIS-010 | Test matrix UC1–UC4 on Claude Code + Codex | done | [notes/AIS-010.md](notes/AIS-010.md) |
 | AIS-011 | Decide xlsx-safe-export disposition (deferred from AIS-002) | done | [notes/AIS-011.md](notes/AIS-011.md) |
+| AIS-012 | skill-updater meta-skill (base UPDATE/UC2 flow) | done | [notes/AIS-012.md](notes/AIS-012.md) |
+| AIS-013 | skill-updater: discover skills new in the registry | done | [notes/AIS-013.md](notes/AIS-013.md) |
 
 ## Cross-cutting decisions & events
 
@@ -98,3 +102,13 @@ residual-risk note on force-pushed-away objects (see git-identity entries below)
   history — genericized to neutral terms — so there is zero reference to the maintainer's original
   corporate toolchain. Full-history tree-filter scrub + force-push; verified zero such references
   in any reachable commit.
+- 2026-07-22 — **Process gap caught (user): skill-updater merged without a harness entry.**
+  The skill landed via two PRs — #1 `d32eb39` (base UPDATE/UC2 flow) and #2 `9ff443e`
+  (discover-new-skills) — but both touched only `registry.json` + `skills/skill-updater/SKILL.md`,
+  **never `harness/`**. So the skill + registry were correct and in sync, yet feature_list.json
+  still stopped at AIS-011 and progress.md still read "PROJECT COMPLETE — 11 features". This
+  violated CLAUDE.md's rule that new work becomes a feature entry. **Backfilled** (user chose the
+  2-feature split): AIS-012 (base flow) + AIS-013 (discovery enhancement), both `done`, phase 4
+  (post-v1); notes AIS-012.md / AIS-013.md written; index + skill count (8→9) updated.
+  **Lesson: a PR that adds/changes a skill must also add/update its feature entry — gate this in
+  review (and consider a CI check that every `skills/<name>` has a matching feature_list entry).**
