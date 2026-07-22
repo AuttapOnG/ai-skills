@@ -27,15 +27,23 @@ else
   echo "INFO: skills/ not created yet (Phase 1 pending)"
 fi
 
-# 3. Registry sync check (registry.json is generated — must match skills/)
+# 3. Registry sync check (registry.json is generated — must match skills/ frontmatter)
 echo "--- Registry sync ---"
 if [ -f "registry.json" ] && [ -d "skills" ]; then
-  FOLDERS=$(find skills -mindepth 1 -maxdepth 1 -type d | wc -l | tr -d ' ')
-  ENTRIES=$(grep -c '"name"' registry.json || true)
-  if [ "$FOLDERS" = "$ENTRIES" ]; then
-    echo "OK: registry entries ($ENTRIES) match skill folders ($FOLDERS)"
+  if [ -f "tools/gen_registry.py" ] && command -v python3 >/dev/null 2>&1; then
+    # Authoritative check: regenerate from frontmatter and diff (ignores generated_at)
+    if ! python3 tools/gen_registry.py --check; then
+      echo "WARNING: registry.json out of sync — run: python3 tools/gen_registry.py --write"
+    fi
   else
-    echo "WARNING: registry entries ($ENTRIES) != skill folders ($FOLDERS) — regenerate registry.json"
+    # Fallback when the generator or python3 is unavailable: crude count comparison
+    FOLDERS=$(find skills -mindepth 1 -maxdepth 1 -type d | wc -l | tr -d ' ')
+    ENTRIES=$(grep -c '"name"' registry.json || true)
+    if [ "$FOLDERS" = "$ENTRIES" ]; then
+      echo "OK: registry entries ($ENTRIES) match skill folders ($FOLDERS)"
+    else
+      echo "WARNING: registry entries ($ENTRIES) != skill folders ($FOLDERS) — regenerate registry.json"
+    fi
   fi
 else
   echo "INFO: registry.json not created yet (Phase 1 pending)"

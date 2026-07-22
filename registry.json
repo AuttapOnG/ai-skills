@@ -1,0 +1,41 @@
+{
+  "generated_at": "2026-07-22T04:14:02Z",
+  "skills": [
+    {
+      "name": "cli-subagents",
+      "description": "Delegate implementation work to locally installed CLI coding agents (e.g. Codex CLI, Gemini CLI) running as background subagents, so a written plan executes on their quota while you keep the spec, review, verification, and commit roles.",
+      "path": "skills/cli-subagents",
+      "updated": "2026-07-22"
+    },
+    {
+      "name": "commit",
+      "description": "Create a git commit — derive the ticket id from the branch name, run the project's lint gate, optionally group atomic commits, and confirm the message first.",
+      "path": "skills/commit",
+      "updated": "2026-07-22"
+    },
+    {
+      "name": "enhance",
+      "description": "Turn a rough prompt into a detailed, context-rich prompt — classify intent, research project context and codebase, and emit a copy-paste-ready enhanced prompt.",
+      "path": "skills/enhance",
+      "updated": "2026-07-22"
+    },
+    {
+      "name": "init-harness",
+      "description": "Use when initializing or upgrading a harness engineering scaffold in the current project — empty repos and projects with existing code, docs, or a partial harness alike. Surveys what exists, then creates or updates CLAUDE.md, AGENTS.md, init.sh, .claude/settings.json, and the harness/ work-control memory (feature_list.json, progress.md, per-feature notes).",
+      "path": "skills/init-harness",
+      "updated": "2026-07-22"
+    },
+    {
+      "name": "pr",
+      "description": "Open or update a pull request — detect the ticket and base branch, create the PR, optionally link it on the issue tracker, and produce a shareable review summary.",
+      "path": "skills/pr",
+      "updated": "2026-07-22"
+    },
+    {
+      "name": "self-review",
+      "description": "Review your own branch changes against project standards, quality, cross-file consistency, and test coverage; present issues as a table, then auto-fix on request.",
+      "path": "skills/self-review",
+      "updated": "2026-07-22"
+    }
+  ]
+}
