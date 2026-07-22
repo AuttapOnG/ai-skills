@@ -25,6 +25,12 @@ agents, so contributions are held to a tight, security-conscious bar.
 - **Everyone else:** fork, create a branch, open a pull request. A maintainer reviews and
   approves before merge. Non-owner changes reach `main` only through this path.
 
+> **Maintainers only — work tracking.** This repo tracks work in `harness/` (a private feature
+> list + notes). Contributors don't need to touch it. When a maintainer merges a new or changed
+> skill, they add the matching harness entry as part of the merge, so the registry and the task
+> memory don't drift. `bash init.sh` warns when a skill folder has no reference in `harness/`,
+> catching any that slipped through at the next session.
+
 ## Review checklist (what a reviewer verifies)
 
 - [ ] `SKILL.md` has `name` + `description` frontmatter and the standard footer.
@@ -33,6 +39,7 @@ agents, so contributions are held to a tight, security-conscious bar.
 - [ ] Markdown only — no scripts, binaries, or tool config files.
 - [ ] `registry.json` regenerated and in sync (`gen_registry.py --check` passes).
 - [ ] Commits carry `Co-Authored-By` trailers.
+- [ ] _(maintainer)_ the merged skill is tracked in `harness/` — `bash init.sh` parity check is quiet.
 
 ## Security red flags — reject on sight
 

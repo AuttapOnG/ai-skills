@@ -64,7 +64,18 @@ hand-edited**. Regenerate it with the repo's own method — discover it (a gener
 `tools/` or `scripts/` directory, a Make target, or the instructions in the repo's README /
 CONTRIBUTING) and run that. Confirm the new skill now appears and the index validates.
 
-## Step 4 — Publish
+## Step 4 — Update the project's work-control memory (if it has one)
+
+Publishing a skill is new work, and some repos track work in a machine-readable task memory —
+a "harness" / feature list / backlog file (for example `harness/feature_list.json`), or an
+issue tracker the repo's README/CONTRIBUTING points to. **If the target repo has one, record
+the skill there in the same change**, so the registry and the project's task memory don't
+drift apart (a skill that lands with no tracking entry is a silent gap). Add or update the
+entry — plus any per-feature note or progress log the repo's convention uses — describing the
+skill and its status. Discover the format from CONTRIBUTING / README / an existing entry; don't
+invent one. If the repo has no such memory, skip this step.
+
+## Step 5 — Publish
 
 - **You own the repo:** commit to a branch and push, or push to the default branch if that's the
   repo's workflow.
@@ -73,13 +84,13 @@ CONTRIBUTING) and run that. Confirm the new skill now appears and the index vali
   trailers.** Write a clear message: what the skill does and why it's being added/changed.
 - Before any push, show the user the exact diff/commit summary and confirm.
 
-## Step 5 — Stamp provenance & verify
+## Step 6 — Stamp provenance & verify
 
 - [ ] After the change lands, record/refresh the skill's `.provenance.json` (source repo,
   skill path, the new commit SHA, install date, `local_modified: false`).
 - [ ] Confirm and **report every check to the user**: audit passed · frontmatter + footer
-  present · registry regenerated and valid · change pushed or PR opened · commits carry
-  `Co-Authored-By` · provenance stamped.
+  present · registry regenerated and valid · work-control entry added/updated (if the repo
+  tracks one) · change pushed or PR opened · commits carry `Co-Authored-By` · provenance stamped.
 
 ---
 *Distributed from [ai-skills](https://github.com/AuttapOnG/ai-skills).

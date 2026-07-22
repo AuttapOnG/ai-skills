@@ -81,6 +81,24 @@
       "phase": 4,
       "title": "skill-updater enhancement: discover skills new in the registry \u2014 fetch registry index, report entries with no local folder, install only on confirmation (closes the new-skill blind spot). Landed via PR #2 (9ff443e); backfilled to harness post-merge.",
       "status": "done"
+    },
+    {
+      "id": "AIS-014",
+      "phase": 4,
+      "title": "Prevent skill\u2194harness drift \u2014 Layer 2: init.sh parity guard. WARN if any skills/<name> is not referenced anywhere in harness/ (word-boundary grep across feature_list.json + progress.md + notes). Local, no push. Backstop that catches drift from any publish path (incl. external PRs) at next session start.",
+      "status": "done"
+    },
+    {
+      "id": "AIS-015",
+      "phase": 4,
+      "title": "Prevent skill\u2194harness drift \u2014 Layer 1: teach skill-publisher to update the project's work-control memory when the target repo has one (guarded/tool-neutral: skip if no harness). Closes the self-publish path at source. Requires republish (push) \u2192 gated on user approval.",
+      "status": "in_progress"
+    },
+    {
+      "id": "AIS-016",
+      "phase": 4,
+      "title": "Prevent skill\u2194harness drift \u2014 Layer 3: CONTRIBUTING note that maintainers record merged skills in harness/ (contributors don't touch it); ties to the init.sh parity warning.",
+      "status": "done"
     }
   ]
 }

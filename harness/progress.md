@@ -14,6 +14,9 @@ skills, generated `registry.json`, README INSTALL/UPDATE protocol, full CONTRIBU
 - AIS-011: xlsx-safe-export → decided SKIP (stays local; markdown-only v1 stands).
 - Phase 4 (post-v1, AIS-012→013): skill-updater meta-skill — base UPDATE/UC2 flow (AIS-012)
   + discover-new-skills enhancement (AIS-013). Landed via PR #1/#2, backfilled to harness.
+- Phase 4 (AIS-014→016): **skill↔harness drift prevention** (3 layers). AIS-014 init.sh parity
+  guard ✓ + AIS-016 CONTRIBUTING note ✓ done; **AIS-015** (skill-publisher writes the work-control
+  entry) — SKILL.md edited & verified locally, **in_progress pending republish/push**.
 
 Possible follow-ups (not committed): README polish from the Codex test (AIS-010 note), and the
 residual-risk note on force-pushed-away objects (see git-identity entries below).
@@ -35,6 +38,9 @@ residual-risk note on force-pushed-away objects (see git-identity entries below)
 | AIS-011 | Decide xlsx-safe-export disposition (deferred from AIS-002) | done | [notes/AIS-011.md](notes/AIS-011.md) |
 | AIS-012 | skill-updater meta-skill (base UPDATE/UC2 flow) | done | [notes/AIS-012.md](notes/AIS-012.md) |
 | AIS-013 | skill-updater: discover skills new in the registry | done | [notes/AIS-013.md](notes/AIS-013.md) |
+| AIS-014 | Drift prevention L2: init.sh skill↔harness parity guard | done | [notes/AIS-014.md](notes/AIS-014.md) |
+| AIS-015 | Drift prevention L1: skill-publisher updates work-control memory | in_progress | [notes/AIS-015.md](notes/AIS-015.md) |
+| AIS-016 | Drift prevention L3: CONTRIBUTING maintainer work-tracking note | done | [notes/AIS-016.md](notes/AIS-016.md) |
 
 ## Cross-cutting decisions & events
 
@@ -112,3 +118,14 @@ residual-risk note on force-pushed-away objects (see git-identity entries below)
   (post-v1); notes AIS-012.md / AIS-013.md written; index + skill count (8→9) updated.
   **Lesson: a PR that adds/changes a skill must also add/update its feature entry — gate this in
   review (and consider a CI check that every `skills/<name>` has a matching feature_list entry).**
+- 2026-07-22 — **Drift-prevention built (AIS-014→016)** after the user asked how to stop this
+  recurring. Reframe: the harness is maintainer-private, NOT part of the registry's public
+  contract — so two publish paths need two fixes, plus a backstop. **L2 (AIS-014, done):** init.sh
+  now word-boundary-greps every `skills/<name>` across all of `harness/` and WARNs if unreferenced
+  — the backstop that catches drift from any path at session start (negative-tested). **L1
+  (AIS-015, in_progress):** skill-publisher gained a conditional "update the project's work-control
+  memory" step (tool-neutral; skips if no harness) — closes the self-publish path, but it edits a
+  *published* skill so it needs a republish/push (user-gated) to land. **L3 (AIS-016, done):**
+  CONTRIBUTING now states maintainers record merged skills in `harness/` + a review-checklist item.
+  Chose **init.sh over public CI** for enforcement: a CI parity check would fail external PRs that
+  correctly don't touch the private harness.
