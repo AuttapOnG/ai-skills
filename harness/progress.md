@@ -2,8 +2,9 @@
 
 ## Current State
 
-**v1 COMPLETE (AIS-001→011); phase-4 follow-ups AIS-012→016 all done & live on main.**
-(skill-updater backfill + skill↔harness drift prevention, landed via PR #3.)
+**v1 COMPLETE (AIS-001→011); phase-4 follow-ups AIS-012→018.**
+AIS-012→016 done & live on main (skill-updater backfill + drift prevention, PR #3).
+AIS-017 (MIT LICENSE) + AIS-018 (README sync) done locally — pending push.
 Public repo live at https://github.com/AuttapOnG/ai-skills with **9** tool-neutral, markdown-only
 skills, generated `registry.json`, README INSTALL/UPDATE protocol, full CONTRIBUTING, CI
 (`validate`, green), branch protection on `main`, and `tools/gen_registry.py`. Clean git identity
@@ -42,6 +43,8 @@ residual-risk note on force-pushed-away objects (see git-identity entries below)
 | AIS-014 | Drift prevention L2: init.sh skill↔harness parity guard | done | [notes/AIS-014.md](notes/AIS-014.md) |
 | AIS-015 | Drift prevention L1: skill-publisher updates work-control memory | done | [notes/AIS-015.md](notes/AIS-015.md) |
 | AIS-016 | Drift prevention L3: CONTRIBUTING maintainer work-tracking note | done | [notes/AIS-016.md](notes/AIS-016.md) |
+| AIS-017 | LICENSE (MIT, © 2026 Auttapong Tura) | done | [notes/AIS-017.md](notes/AIS-017.md) |
+| AIS-018 | README sync (License section, UPDATE new-skills step, meta-skills note) | done | [notes/AIS-018.md](notes/AIS-018.md) |
 
 ## Cross-cutting decisions & events
 
@@ -136,3 +139,12 @@ residual-risk note on force-pushed-away objects (see git-identity entries below)
   same as #1/#2. skill-publisher is now republished on public main → **AIS-015 done**; all phase-4
   follow-ups complete. Note: pushes are gated by the settings.json push-hook + the auto-mode
   classifier — the branch push and the PR merge were both performed by the human.
+- 2026-07-22 — **Repo housekeeping (user prompt): licensing + README currency.** (1) AIS-017:
+  added a root MIT `LICENSE` (© 2026 Auttapong Tura). The registry had **no license** — a public
+  install/contribute repo defaults to all-rights-reserved, which forbade the very reuse the
+  INSTALL protocol asks for. MIT chosen over CC BY 4.0 / Apache-2.0 for lowest friction (footer
+  already carries attribution). (2) AIS-018: README synced — License section, a new "surface
+  skills new in the registry" step in the UPDATE protocol (it had drifted behind skill-updater/
+  AIS-013), and a note that INSTALL/UPDATE/publish are also installable as skill-updater /
+  skill-publisher. README still points to registry.json as the index (no per-skill listing), so
+  the new skill itself needed no README change. Both done locally; awaiting the human push.

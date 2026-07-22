@@ -99,6 +99,18 @@
       "phase": 4,
       "title": "Prevent skill\u2194harness drift \u2014 Layer 3: CONTRIBUTING note that maintainers record merged skills in harness/ (contributors don't touch it); ties to the init.sh parity warning.",
       "status": "done"
+    },
+    {
+      "id": "AIS-017",
+      "phase": 4,
+      "title": "Add LICENSE (MIT, \u00a9 2026 Auttapong Tura). A public install/contribute registry with no license = full copyright by default, which forbids the reuse the INSTALL protocol depends on. Root LICENSE file covers all markdown skills; inbound=outbound for contributions.",
+      "status": "done"
+    },
+    {
+      "id": "AIS-018",
+      "phase": 4,
+      "title": "README sync: add a License section; add the 'discover skills new in the registry' step to the UPDATE protocol (align with skill-updater/AIS-013); note that INSTALL/UPDATE/publish flows are also installable as meta-skills (skill-updater, skill-publisher).",
+      "status": "done"
     }
   ]
 }

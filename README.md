@@ -26,6 +26,11 @@ skills directory, and records where it came from. Updates work the same way, in 
 The machine-readable index of everything available is [`registry.json`](registry.json)
 (generated from each skill's frontmatter — never hand-edited).
 
+> **These protocols are also packaged as installable skills.** `skill-updater` runs the UPDATE
+> flow below (including discovering skills new in the registry); `skill-publisher` runs the
+> publish/contribute flow. Install them like any other skill, or just follow the steps here by
+> hand — the protocol is the source of truth either way.
+
 ---
 
 ## INSTALL — for AI agents
@@ -85,17 +90,23 @@ Trigger: the user says something like *"update my skills from the repo."* This p
 2. **Check for newer versions (no clone).** For each `skill_path`, ask the GitHub API for the
    latest commit sha touching that path. If it equals the recorded `commit_sha`, it's
    up-to-date — skip.
-3. **Show the commit log before changing anything.** For each skill that is behind, list the
+3. **Surface skills new in the registry.** Fetch [`registry.json`](registry.json) and list any
+   skill whose `name` has no local folder — these are new since you last installed. Offer to
+   install them (opt-in — never auto-install; an absent skill may have been skipped on purpose).
+   If the index can't be fetched, say so and continue with updates only.
+4. **Show the commit log before changing anything.** For each skill that is behind, list the
    commits between the installed sha and the latest (subject + author is enough) so the user
    sees exactly what would change. Apply the update only after the user confirms.
-4. **Respect local edits.** If a skill's `.provenance.json` has `local_modified: true`, **STOP
+5. **Respect local edits.** If a skill's `.provenance.json` has `local_modified: true`, **STOP
    and ask** — do not overwrite. Offer three choices: *keep mine* · *take upstream* · *show me
    the diff first*.
-5. **After applying,** rewrite `.provenance.json` with the new `commit_sha` and `installed_at`.
-6. **Verify (report every check):**
+6. **After applying (updates and new installs),** rewrite `.provenance.json` with the new
+   `commit_sha` and `installed_at`.
+7. **Verify (report every check):**
    - [ ] Every skill was either up-to-date, updated-on-confirmation, or explicitly left alone.
+   - [ ] Skills new in the registry were reported, and installed only on explicit confirmation.
    - [ ] No `local_modified` skill was overwritten without an explicit choice.
-   - [ ] Each updated `.provenance.json` now records the new `commit_sha`.
+   - [ ] Each updated or newly-installed `.provenance.json` now records the right `commit_sha`.
 
 ---
 
@@ -105,6 +116,14 @@ If you improve a skill, offer to contribute the change back — the repo owner p
 everyone else forks and opens a PR. All commits must credit their co-authors (human and AI)
 via `Co-Authored-By` trailers, and skills stay **markdown-only**. See
 [CONTRIBUTING.md](CONTRIBUTING.md) for the full checklist.
+
+---
+
+## License
+
+Released under the [MIT License](LICENSE) — install, adapt, and redistribute freely. By
+contributing you agree your contribution is provided under the same license (inbound = outbound).
+The standard footer on each skill preserves attribution back to this registry.
 
 ---
 
