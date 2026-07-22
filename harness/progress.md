@@ -2,17 +2,19 @@
 
 ## Current State
 
-Public repo live at https://github.com/AuttapOnG/ai-skills. **Phase 1 + most of Phase 2 done.**
-- Phase 1 (AIS-001→004): 6 tool-neutral skills, README INSTALL/UPDATE protocol, generated
-  `registry.json`, `tools/gen_registry.py`, wired `init.sh`. UC1 install acceptance passed live.
-- Phase 2: AIS-005 (UPDATE/UC2 acceptance passed live) ✓, AIS-007 (CI validate.yml, green run) ✓,
-  AIS-006 CONTRIBUTING ✓ (branch protection deferred to end, to avoid blocking owner pushes).
+**PROJECT COMPLETE — all 11 features done.** Public repo live at
+https://github.com/AuttapOnG/ai-skills with 8 tool-neutral, markdown-only skills, generated
+`registry.json`, README INSTALL/UPDATE protocol, full CONTRIBUTING, CI (`validate`, green),
+branch protection on `main`, and `tools/gen_registry.py`. Clean git identity + history
+(personal email; no company tokens anywhere in reachable history).
+- Phase 1 (AIS-001→004): repo, skills, README, registry, UC1 install acceptance (live).
+- Phase 2 (AIS-005→007): UC2 update acceptance (live), CI, CONTRIBUTING + branch protection.
+- Phase 3 (AIS-008→010): skill-publisher, generalized worklog, cross-tool test matrix
+  (protocol verified tool-neutral via a real Codex UC1 run).
+- AIS-011: xlsx-safe-export → decided SKIP (stays local; markdown-only v1 stands).
 
-Driving to full completion with standing push approval (leak scan before each push; stop only for
-branch protection + AIS-011). **Next: Phase 3** — AIS-008 (skill-publisher meta-skill), AIS-009
-(generalize + publish worklog), AIS-010 (UC1–UC4 test matrix on Claude Code + Codex) → branch
-protection → **AIS-011** (xlsx-safe-export decision). Plan:
-`docs/plans/2026-07-22-phase1-skill-migration.md`.
+Possible follow-ups (not committed): README polish from the Codex test (AIS-010 note), and the
+residual-risk note on force-pushed-away objects (see git-identity entries below).
 
 ## Feature index
 
@@ -23,12 +25,12 @@ protection → **AIS-011** (xlsx-safe-export decision). Plan:
 | AIS-003 | README protocol (INSTALL/UPDATE) | done | [notes/AIS-003.md](notes/AIS-003.md) |
 | AIS-004 | Registry generator + first registry.json + UC1 acceptance | done | [notes/AIS-004.md](notes/AIS-004.md) |
 | AIS-005 | Provenance + full UPDATE protocol | done | [notes/AIS-005.md](notes/AIS-005.md) |
-| AIS-006 | CONTRIBUTING.md + branch protection | in_progress | [notes/AIS-006.md](notes/AIS-006.md) |
+| AIS-006 | CONTRIBUTING.md + branch protection | done | [notes/AIS-006.md](notes/AIS-006.md) |
 | AIS-007 | CI validate.yml | done | [notes/AIS-007.md](notes/AIS-007.md) |
 | AIS-008 | skill-publisher meta-skill | done | [notes/AIS-008.md](notes/AIS-008.md) |
 | AIS-009 | Generalize worklog and publish | done | [notes/AIS-009.md](notes/AIS-009.md) |
 | AIS-010 | Test matrix UC1–UC4 on Claude Code + Codex | done | [notes/AIS-010.md](notes/AIS-010.md) |
-| AIS-011 | Decide xlsx-safe-export disposition (deferred from AIS-002) | pending | — |
+| AIS-011 | Decide xlsx-safe-export disposition (deferred from AIS-002) | done | [notes/AIS-011.md](notes/AIS-011.md) |
 
 ## Cross-cutting decisions & events
 
@@ -85,3 +87,9 @@ protection → **AIS-011** (xlsx-safe-export decision). Plan:
   **Lesson: genericize BEFORE the first commit, and GATE every push on the leak scan (abort, not
   echo).** Residual risk to note: force-pushed-away commits may linger as unreachable objects in
   GitHub until GC / via direct SHA; for guaranteed purge on a sensitive leak, contact GitHub Support.
+- 2026-07-22 — Phase 3 done: AIS-008 (skill-publisher) ✓, AIS-009 (worklog generalized +
+  published, subagent-driven via Codex) ✓, AIS-010 (cross-tool test matrix; Codex followed the
+  README INSTALL protocol end-to-end → protocol confirmed tool-neutral) ✓.
+- 2026-07-22 — **PROJECT COMPLETE.** AIS-006 branch protection set on `main` (Standard: PR + 1
+  review + `validate` check for non-owners; owner/admin bypass). AIS-011 decided: **skip**
+  xlsx-safe-export (stays local; markdown-only v1 unchanged). All 11 features done.

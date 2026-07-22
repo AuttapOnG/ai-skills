@@ -38,7 +38,7 @@
       "id": "AIS-006",
       "phase": 2,
       "title": "CONTRIBUTING.md (review checklist, Co-Authored-By rule, markdown-only policy) + branch protection",
-      "status": "in_progress"
+      "status": "done"
     },
     {
       "id": "AIS-007",
@@ -68,7 +68,7 @@
       "id": "AIS-011",
       "phase": 3,
       "title": "Decide xlsx-safe-export disposition (deferred from AIS-002): its core is a Python validator, which \u00a76.2 markdown-only forbids. Options: keep local-only like update-tags; add a maintainer-tooling carve-out to \u00a76.2; or ship an advisory markdown-only version. Requires a spec decision before any migration.",
-      "status": "pending"
+      "status": "done"
     }
   ]
 }
