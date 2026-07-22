@@ -1,6 +1,6 @@
 ---
 name: skill-updater
-description: Use when the user wants to check for or apply updates to skills installed from a shared skills registry — "update my skills", "are my skills up to date?", "check the registry for new versions", or any mention of syncing installed skills with their source repo. Inventories every installed skill's .provenance.json, compares against the registry's latest commits via the host's API (no clone), previews the commit log, and applies updates only on confirmation — never overwriting local edits.
+description: Use when the user wants to check for or apply updates to skills installed from a shared skills registry, or asks whether the registry has anything new — "update my skills", "are my skills up to date?", "any new skills in the registry?", or any mention of syncing installed skills with their source repo. Inventories every installed skill's .provenance.json, compares against the registry's latest commits via the host's API (no clone), reports skills that are new in the registry but not yet installed, previews the commit log, and applies changes only on confirmation — never overwriting local edits.
 ---
 
 # Skill Updater
@@ -50,7 +50,17 @@ GET https://api.github.com/repos/<owner>/<repo>/commits?path=<skill_path>&per_pa
   delete it. Do not delete without an explicit choice.
 - API errors or rate limits → report which skills could not be checked; never guess.
 
-## Step 3 — Preview before anything changes
+## Step 3 — Discover skills new in the registry
+
+Updating only what's installed would miss skills added to the registry since you last looked.
+For each distinct `source_repo`, fetch the registry's machine-readable index (e.g.
+`registry.json` at the repo root — the registry's README names it). Any entry whose `name`
+has no matching folder in your skills directory is **new in the registry**: collect its
+`name` + `description` for the preview. Don't install anything yet — new skills are opt-in,
+and the user may have deliberately skipped some (a skill absent locally is not a defect).
+If the index can't be fetched, say so and continue with updates only.
+
+## Step 4 — Preview before anything changes
 
 For every skill that is behind, show the commits between the installed sha and the latest
 (subject + author is enough). List commits **touching the skill's path** and cut the list at
@@ -64,11 +74,13 @@ history, show the path's full recent log and say so.) Present one summary table:
 |---|---|---|---|---|
 | worklog | `ad0a6ae` | `f3c9b12` | 2 | |
 | commit | `473579d` | `473579d` | up-to-date | |
+| skill-search | — | `f3c9b12` | — | **new in registry** — "find skills by …" |
 | my-local-thing | — | — | — | local-only, skipped |
 
-Then ask which to apply: all, a subset, or none. **Apply only what the user confirms.**
+Then ask which to act on: apply all updates, a subset, or none — and separately, which new
+skills (if any) to install. **Apply only what the user confirms.**
 
-## Step 4 — Respect local edits
+## Step 5 — Respect local edits
 
 If a skill's provenance has `local_modified: true`, **stop and ask** before touching it —
 the user deliberately changed it. Offer exactly three choices:
@@ -81,23 +93,27 @@ A locally-improved skill is also a publishing candidate — if the local version
 improvement, mention that it could be contributed back (see the registry's README) rather
 than discarded.
 
-## Step 5 — Apply confirmed updates
+## Step 6 — Apply confirmed updates and installs
 
 For each confirmed skill:
 
 1. Raw-fetch every file under its `skill_path` at the latest commit — only that folder,
    not the whole repo (e.g. `https://raw.githubusercontent.com/<owner>/<repo>/<sha>/<path>/...`).
 2. Replace the installed folder's contents wholesale — don't merge file-by-file; upstream may
-   have renamed or removed files.
-3. Rewrite `.provenance.json` with the new `commit_sha`, today's date as `installed_at`, and
+   have renamed or removed files. (For a **new** install there is nothing to replace — this
+   is the registry's INSTALL protocol: same fetch, fresh folder.)
+3. Write `.provenance.json` with the `commit_sha` fetched, today's date as `installed_at`, and
    `local_modified: false`.
 
-## Step 6 — Verify (report every check to the user)
+## Step 7 — Verify (report every check to the user)
 
 - [ ] Every provenance-carrying skill was either up-to-date, updated-on-confirmation, or
       explicitly left alone — none silently skipped.
 - [ ] No `local_modified` skill was overwritten without an explicit keep/take/diff choice.
-- [ ] Each updated skill's `.provenance.json` records the new `commit_sha` and is valid JSON.
+- [ ] Each updated or newly-installed skill's `.provenance.json` records the right
+      `commit_sha` and is valid JSON.
+- [ ] Skills new in the registry were reported (name + description) — installed only on
+      explicit confirmation, never auto-installed.
 - [ ] Local-only skills were reported as skipped.
 - [ ] Anything that could not be checked (API errors, removed paths) was reported, not hidden.
 
