@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-22T06:15:35Z",
+  "generated_at": "2026-07-22T07:15:51Z",
   "skills": [
     {
       "name": "cli-subagents",
@@ -41,6 +41,12 @@
       "name": "skill-publisher",
       "description": "Use after creating or substantially improving a skill to offer publishing it to a shared skills registry — ask first, then audit for safety and neutrality, normalize frontmatter and footer, regenerate the registry, and open the change as a push or pull request with co-author credit.",
       "path": "skills/skill-publisher",
+      "updated": "2026-07-22"
+    },
+    {
+      "name": "skill-updater",
+      "description": "Use when the user wants to check for or apply updates to skills installed from a shared skills registry — \"update my skills\", \"are my skills up to date?\", \"check the registry for new versions\", or any mention of syncing installed skills with their source repo. Inventories every installed skill's .provenance.json, compares against the registry's latest commits via the host's API (no clone), previews the commit log, and applies updates only on confirmation — never overwriting local edits.",
+      "path": "skills/skill-updater",
       "updated": "2026-07-22"
     },
     {
