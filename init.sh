@@ -16,7 +16,15 @@ fi
 # 2. Personal/internal path scan (skills must be portable and public-safe)
 echo "--- Scanning skills/ for personal paths ---"
 if [ -d "skills" ]; then
-  HITS=$(grep -rlE '(/Users/|C:\\\\|<company>|<company>)' skills/ 2>/dev/null || true)
+  # Generic patterns are public-safe. Company-specific terms live in a git-ignored
+  # local file (.scan-local-patterns, one term per line) so the scan stays effective
+  # without hardcoding internal names in this public repo.
+  SCAN_PATTERN='/Users/|C:\\\\'
+  if [ -f ".scan-local-patterns" ]; then
+    EXTRA=$(grep -vE '^[[:space:]]*(#|$)' .scan-local-patterns | paste -sd '|' -)
+    [ -n "$EXTRA" ] && SCAN_PATTERN="$SCAN_PATTERN|$EXTRA"
+  fi
+  HITS=$(grep -rlE "$SCAN_PATTERN" skills/ 2>/dev/null || true)
   if [ -n "$HITS" ]; then
     echo "WARNING: personal/internal references found in:"
     echo "$HITS"

@@ -13,5 +13,8 @@ Thumbs.db
 .cursor/
 .copilot/
 
+# Local-only scan config (company-internal patterns — never publish)
+.scan-local-patterns
+
 # Scratch files agents may create during long tasks
 WORKING_STATE.md
