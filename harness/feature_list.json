@@ -50,19 +50,19 @@
       "id": "AIS-008",
       "phase": 3,
       "title": "skill-publisher meta-skill (ask share/publish, audit, normalize, regenerate registry, push/PR)",
-      "status": "pending"
+      "status": "in_progress"
     },
     {
       "id": "AIS-009",
       "phase": 3,
       "title": "Generalize worklog (split personal Notion config from logic) and publish",
-      "status": "pending"
+      "status": "in_progress"
     },
     {
       "id": "AIS-010",
       "phase": 3,
       "title": "Test matrix: UC1-UC4 on both Claude Code and Codex, results recorded in harness/notes",
-      "status": "pending"
+      "status": "in_progress"
     },
     {
       "id": "AIS-011",

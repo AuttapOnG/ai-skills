@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-22T04:14:02Z",
+  "generated_at": "2026-07-22T05:53:46Z",
   "skills": [
     {
       "name": "cli-subagents",
@@ -35,6 +35,12 @@
       "name": "self-review",
       "description": "Review your own branch changes against project standards, quality, cross-file consistency, and test coverage; present issues as a table, then auto-fix on request.",
       "path": "skills/self-review",
+      "updated": "2026-07-22"
+    },
+    {
+      "name": "skill-publisher",
+      "description": "Use after creating or substantially improving a skill to offer publishing it to a shared skills registry — ask first, then audit for safety and neutrality, normalize frontmatter and footer, regenerate the registry, and open the change as a push or pull request with co-author credit.",
+      "path": "skills/skill-publisher",
       "updated": "2026-07-22"
     }
   ]
