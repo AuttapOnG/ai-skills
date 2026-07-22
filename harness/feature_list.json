@@ -69,6 +69,18 @@
       "phase": 3,
       "title": "Decide xlsx-safe-export disposition (deferred from AIS-002): its core is a Python validator, which \u00a76.2 markdown-only forbids. Options: keep local-only like update-tags; add a maintainer-tooling carve-out to \u00a76.2; or ship an advisory markdown-only version. Requires a spec decision before any migration.",
       "status": "done"
+    },
+    {
+      "id": "AIS-012",
+      "phase": 4,
+      "title": "skill-updater meta-skill (base UPDATE/UC2 flow as an installable skill): inventory provenance, check upstream via host API (no clone), preview path-scoped commit log, confirm-then-apply, respect local_modified 3-way. Landed via PR #1 (d32eb39); backfilled to harness post-merge.",
+      "status": "done"
+    },
+    {
+      "id": "AIS-013",
+      "phase": 4,
+      "title": "skill-updater enhancement: discover skills new in the registry \u2014 fetch registry index, report entries with no local folder, install only on confirmation (closes the new-skill blind spot). Landed via PR #2 (9ff443e); backfilled to harness post-merge.",
+      "status": "done"
     }
   ]
 }
