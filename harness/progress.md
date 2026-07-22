@@ -2,19 +2,16 @@
 
 ## Current State
 
-Design approved and spec written (v1). Harness scaffold complete (CLAUDE.md,
-AGENTS.md, init.sh, settings hooks, ADR-0001). **AIS-001 done:** repo is live,
-public, and pushed at https://github.com/AuttapOnG/ai-skills (name confirmed
-`ai-skills`; origin/main == HEAD == f1ccc3d).
-**AIS-002 done:** 6 skills migrated (self-review, commit, enhance, pr, cli-subagents,
-init-harness) — tool-neutral, markdown-only, frontmatter + footer, committed locally with
-Co-Authored-By (Claude + Codex). Executed subagent-driven with Codex CLI as executor.
-**PHASE 1 COMPLETE (AIS-001→004).** Repo is public with 6 tool-neutral skills, README
-INSTALL/UPDATE protocol, generated `registry.json`, `tools/gen_registry.py`, and wired
-`init.sh`. Pushed to origin at `5fd9670`. **UC1 acceptance passed**: real install of
-`self-review` fetched from GitHub (registry + API SHA + raw), valid provenance, all verify
-checks green. Next: Phase 2 (AIS-005 provenance/UPDATE, AIS-006 CONTRIBUTING+branch protection,
-AIS-007 CI) and the open decision AIS-011 (xlsx-safe-export). Plan:
+Public repo live at https://github.com/AuttapOnG/ai-skills. **Phase 1 + most of Phase 2 done.**
+- Phase 1 (AIS-001→004): 6 tool-neutral skills, README INSTALL/UPDATE protocol, generated
+  `registry.json`, `tools/gen_registry.py`, wired `init.sh`. UC1 install acceptance passed live.
+- Phase 2: AIS-005 (UPDATE/UC2 acceptance passed live) ✓, AIS-007 (CI validate.yml, green run) ✓,
+  AIS-006 CONTRIBUTING ✓ (branch protection deferred to end, to avoid blocking owner pushes).
+
+Driving to full completion with standing push approval (leak scan before each push; stop only for
+branch protection + AIS-011). **Next: Phase 3** — AIS-008 (skill-publisher meta-skill), AIS-009
+(generalize + publish worklog), AIS-010 (UC1–UC4 test matrix on Claude Code + Codex) → branch
+protection → **AIS-011** (xlsx-safe-export decision). Plan:
 `docs/plans/2026-07-22-phase1-skill-migration.md`.
 
 ## Feature index
@@ -25,9 +22,9 @@ AIS-007 CI) and the open decision AIS-011 (xlsx-safe-export). Plan:
 | AIS-002 | Migrate & convert skills per spec §7 | done | [notes/AIS-002.md](notes/AIS-002.md) |
 | AIS-003 | README protocol (INSTALL/UPDATE) | done | [notes/AIS-003.md](notes/AIS-003.md) |
 | AIS-004 | Registry generator + first registry.json + UC1 acceptance | done | [notes/AIS-004.md](notes/AIS-004.md) |
-| AIS-005 | Provenance + full UPDATE protocol | pending | [notes/AIS-005.md](notes/AIS-005.md) |
-| AIS-006 | CONTRIBUTING.md + branch protection | pending | [notes/AIS-006.md](notes/AIS-006.md) |
-| AIS-007 | CI validate.yml | pending | [notes/AIS-007.md](notes/AIS-007.md) |
+| AIS-005 | Provenance + full UPDATE protocol | done | [notes/AIS-005.md](notes/AIS-005.md) |
+| AIS-006 | CONTRIBUTING.md + branch protection | in_progress | [notes/AIS-006.md](notes/AIS-006.md) |
+| AIS-007 | CI validate.yml | done | [notes/AIS-007.md](notes/AIS-007.md) |
 | AIS-008 | skill-publisher meta-skill | pending | [notes/AIS-008.md](notes/AIS-008.md) |
 | AIS-009 | Generalize worklog and publish | pending | [notes/AIS-009.md](notes/AIS-009.md) |
 | AIS-010 | Test matrix UC1–UC4 on Claude Code + Codex | pending | [notes/AIS-010.md](notes/AIS-010.md) |
@@ -63,3 +60,10 @@ AIS-007 CI) and the open decision AIS-011 (xlsx-safe-export). Plan:
   12 commits). UC1 install acceptance passed end-to-end from the live GitHub repo (spec §8).
   The push succeeded (settings.json push-hook did not intercept in this run) — user had
   pre-approved it.
+- 2026-07-22 — User granted STANDING push approval to finish the whole project; I run the
+  full leak scan before each push and stop only for branch protection + the AIS-011 decision.
+- 2026-07-22 — **Phase 2 mostly done**: AIS-005 (UPDATE/UC2) + AIS-007 (CI validate.yml) done
+  and verified live (CI run green `76694c7`; UC2 detected `pr` update + showed commit log +
+  applied + local_modified guard). AIS-006 CONTRIBUTING done; **branch protection deferred to
+  end** (avoid blocking remaining owner pushes). Next: Phase 3 (AIS-008/009/010) → branch
+  protection → AIS-011 decision.

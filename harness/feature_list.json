@@ -32,7 +32,7 @@
       "id": "AIS-005",
       "phase": 2,
       "title": "Provenance schema + full UPDATE protocol (commit-log preview, local_modified 3-way ask)",
-      "status": "in_progress"
+      "status": "done"
     },
     {
       "id": "AIS-006",
@@ -44,7 +44,7 @@
       "id": "AIS-007",
       "phase": 2,
       "title": "CI validate.yml: registry sync, frontmatter/footer, no personal paths, no executables",
-      "status": "in_progress"
+      "status": "done"
     },
     {
       "id": "AIS-008",
