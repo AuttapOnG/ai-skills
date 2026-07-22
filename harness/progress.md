@@ -76,3 +76,12 @@ protection → **AIS-011** (xlsx-safe-export decision). Plan:
 - 2026-07-22 — AIS-008 done: skill-publisher meta-skill (UC4 flow) published; registry now 7
   skills; CI green. CI caught a `/Users/` literal in its audit text (run failure) → fixed →
   green — doubles as a live negative test that CI rejects violations.
+- 2026-07-22 — **Public-hygiene scrub completed** (extends the identity fix). Found that the
+  email rewrite alone was insufficient: earlier intermediate commits still had the company
+  name + internal issue tracker URL in their *content* (plan/notes), and they'd been pushed. Ran a
+  full-history CONTENT rewrite (filter-branch tree-filter) replacing all company tokens with
+  `<company>` placeholders across every commit, then force-pushed. Verified against the remote:
+  zero company tokens in any commit reachable from origin/main; all author emails personal.
+  **Lesson: genericize BEFORE the first commit, and GATE every push on the leak scan (abort, not
+  echo).** Residual risk to note: force-pushed-away commits may linger as unreachable objects in
+  GitHub until GC / via direct SHA; for guaranteed purge on a sensitive leak, contact GitHub Support.
