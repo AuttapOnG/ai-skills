@@ -62,7 +62,7 @@
       "id": "AIS-010",
       "phase": 3,
       "title": "Test matrix: UC1-UC4 on both Claude Code and Codex, results recorded in harness/notes",
-      "status": "in_progress"
+      "status": "done"
     },
     {
       "id": "AIS-011",

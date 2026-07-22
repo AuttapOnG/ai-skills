@@ -26,8 +26,8 @@ protection → **AIS-011** (xlsx-safe-export decision). Plan:
 | AIS-006 | CONTRIBUTING.md + branch protection | in_progress | [notes/AIS-006.md](notes/AIS-006.md) |
 | AIS-007 | CI validate.yml | done | [notes/AIS-007.md](notes/AIS-007.md) |
 | AIS-008 | skill-publisher meta-skill | done | [notes/AIS-008.md](notes/AIS-008.md) |
-| AIS-009 | Generalize worklog and publish | pending | [notes/AIS-009.md](notes/AIS-009.md) |
-| AIS-010 | Test matrix UC1–UC4 on Claude Code + Codex | pending | [notes/AIS-010.md](notes/AIS-010.md) |
+| AIS-009 | Generalize worklog and publish | done | [notes/AIS-009.md](notes/AIS-009.md) |
+| AIS-010 | Test matrix UC1–UC4 on Claude Code + Codex | done | [notes/AIS-010.md](notes/AIS-010.md) |
 | AIS-011 | Decide xlsx-safe-export disposition (deferred from AIS-002) | pending | — |
 
 ## Cross-cutting decisions & events
