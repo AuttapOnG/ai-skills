@@ -25,7 +25,7 @@ protection → **AIS-011** (xlsx-safe-export decision). Plan:
 | AIS-005 | Provenance + full UPDATE protocol | done | [notes/AIS-005.md](notes/AIS-005.md) |
 | AIS-006 | CONTRIBUTING.md + branch protection | in_progress | [notes/AIS-006.md](notes/AIS-006.md) |
 | AIS-007 | CI validate.yml | done | [notes/AIS-007.md](notes/AIS-007.md) |
-| AIS-008 | skill-publisher meta-skill | pending | [notes/AIS-008.md](notes/AIS-008.md) |
+| AIS-008 | skill-publisher meta-skill | done | [notes/AIS-008.md](notes/AIS-008.md) |
 | AIS-009 | Generalize worklog and publish | pending | [notes/AIS-009.md](notes/AIS-009.md) |
 | AIS-010 | Test matrix UC1–UC4 on Claude Code + Codex | pending | [notes/AIS-010.md](notes/AIS-010.md) |
 | AIS-011 | Decide xlsx-safe-export disposition (deferred from AIS-002) | pending | — |
@@ -67,3 +67,12 @@ protection → **AIS-011** (xlsx-safe-export decision). Plan:
   applied + local_modified guard). AIS-006 CONTRIBUTING done; **branch protection deferred to
   end** (avoid blocking remaining owner pushes). Next: Phase 3 (AIS-008/009/010) → branch
   protection → AIS-011 decision.
+- 2026-07-22 — **Git identity fixed** (user caught it): commits were authored with a work
+  (company) email from the global ~/.gitconfig on this PUBLIC PERSONAL repo. Set repo-LOCAL
+  identity to the personal address `ace.auttapong@gmail.com`; rewrote all 22 commits
+  (author+committer, filter-branch, names/dates/messages/Co-Authored-By preserved) and
+  force-pushed. origin now 100% personal email; the work email was removed from public history.
+  (For attribution, ensure the personal email is added to the AuttapOnG GitHub account.)
+- 2026-07-22 — AIS-008 done: skill-publisher meta-skill (UC4 flow) published; registry now 7
+  skills; CI green. CI caught a `/Users/` literal in its audit text (run failure) → fixed →
+  green — doubles as a live negative test that CI rejects violations.
