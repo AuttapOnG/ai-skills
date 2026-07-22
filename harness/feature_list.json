@@ -1,7 +1,7 @@
 {
   "project": "ai-skills",
   "version": "0.1",
-  "product_direction": "Public GitHub registry of AI-tool-neutral skills that any AI agent installs/updates by reading the repo protocol — no clone, no scripts, no symlinks.",
+  "product_direction": "Public GitHub registry of AI-tool-neutral skills that any AI agent installs/updates by reading the repo protocol \u2014 no clone, no scripts, no symlinks.",
   "spec": "docs/specs/2026-07-22-ai-skills-registry-design.md",
   "features": [
     {
@@ -13,7 +13,7 @@
     {
       "id": "AIS-002",
       "phase": 1,
-      "title": "Migrate & convert skills per spec §7 (except worklog, update-tags): frontmatter + standard footer + neutrality pass",
+      "title": "Migrate & convert skills per spec \u00a77 (except worklog, update-tags): frontmatter + standard footer + neutrality pass",
       "status": "done"
     },
     {
@@ -32,19 +32,19 @@
       "id": "AIS-005",
       "phase": 2,
       "title": "Provenance schema + full UPDATE protocol (commit-log preview, local_modified 3-way ask)",
-      "status": "pending"
+      "status": "in_progress"
     },
     {
       "id": "AIS-006",
       "phase": 2,
       "title": "CONTRIBUTING.md (review checklist, Co-Authored-By rule, markdown-only policy) + branch protection",
-      "status": "pending"
+      "status": "in_progress"
     },
     {
       "id": "AIS-007",
       "phase": 2,
       "title": "CI validate.yml: registry sync, frontmatter/footer, no personal paths, no executables",
-      "status": "pending"
+      "status": "in_progress"
     },
     {
       "id": "AIS-008",
@@ -67,7 +67,7 @@
     {
       "id": "AIS-011",
       "phase": 3,
-      "title": "Decide xlsx-safe-export disposition (deferred from AIS-002): its core is a Python validator, which §6.2 markdown-only forbids. Options: keep local-only like update-tags; add a maintainer-tooling carve-out to §6.2; or ship an advisory markdown-only version. Requires a spec decision before any migration.",
+      "title": "Decide xlsx-safe-export disposition (deferred from AIS-002): its core is a Python validator, which \u00a76.2 markdown-only forbids. Options: keep local-only like update-tags; add a maintainer-tooling carve-out to \u00a76.2; or ship an advisory markdown-only version. Requires a spec decision before any migration.",
       "status": "pending"
     }
   ]

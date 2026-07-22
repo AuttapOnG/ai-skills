@@ -1,0 +1,46 @@
+name: validate
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # gen_registry.py derives each skill's "updated" from per-path git log,
+          # so the full history is required or --check would false-fail.
+          fetch-depth: 0
+
+      - name: registry.json in sync with skill frontmatter
+        run: python3 tools/gen_registry.py --check
+
+      - name: Every SKILL.md has frontmatter (name + description) and the standard footer
+        run: |
+          status=0
+          for f in skills/*/SKILL.md; do
+            head -n 8 "$f" | grep -qE '^name:'        || { echo "::error file=$f::missing 'name' frontmatter"; status=1; }
+            head -n 8 "$f" | grep -qE '^description:' || { echo "::error file=$f::missing 'description' frontmatter"; status=1; }
+            grep -qF 'Distributed from [ai-skills](https://github.com/AuttapOnG/ai-skills).' "$f" \
+              || { echo "::error file=$f::missing standard footer"; status=1; }
+          done
+          exit $status
+
+      - name: No personal absolute paths in skills/
+        run: |
+          if grep -rnI -e '/Users/' -e 'C:\\' skills/; then
+            echo "::error::personal absolute path found in skills/ (see matches above)"
+            exit 1
+          fi
+
+      - name: Skills are markdown-only (no scripts, binaries, or config)
+        run: |
+          hits=$(find skills -type f ! -name '*.md')
+          if [ -n "$hits" ]; then
+            echo "::error::non-markdown file(s) under skills/:"
+            echo "$hits"
+            exit 1
+          fi
