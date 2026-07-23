@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-22T07:30:54Z",
+  "generated_at": "2026-07-23T02:38:25Z",
   "skills": [
     {
       "name": "cli-subagents",
@@ -24,6 +24,12 @@
       "description": "Use when initializing or upgrading a harness engineering scaffold in the current project — empty repos and projects with existing code, docs, or a partial harness alike. Surveys what exists, then creates or updates CLAUDE.md, AGENTS.md, init.sh, .claude/settings.json, and the harness/ work-control memory (feature_list.json, progress.md, per-feature notes).",
       "path": "skills/init-harness",
       "updated": "2026-07-22"
+    },
+    {
+      "name": "orchestrate",
+      "description": "Turn the main session into a cost-optimized dispatcher — decompose the request, route each task to the cheapest subagent tier that can do it, keep each agent's context minimal, and dispatch one at a time unless the user trades cost for speed. Use ONLY when the user explicitly asks — \"orchestrate\", \"route by cost/difficulty\", \"use the cheapest model that can handle it\", \"minimize tokens\" — never proactively.",
+      "path": "skills/orchestrate",
+      "updated": "2026-07-23"
     },
     {
       "name": "pr",

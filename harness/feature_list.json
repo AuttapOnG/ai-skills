@@ -117,6 +117,12 @@
       "phase": 4,
       "title": "README 'Quick start (for humans)' section: copy-paste prompts a human gives their own AI agent (install / update, matching the protocol trigger phrases), note that the agent reports the verify checklist back, and that everything below is addressed to agents. Placed after the intro, before the agent-addressed blockquote; protocols untouched. Spec §5 amended.",
       "status": "done"
+    },
+    {
+      "id": "AIS-020",
+      "phase": 4,
+      "title": "orchestrate skill: cost-optimized subagent routing, written tool-neutral from scratch (concept seen in a company-internal Claude-specific skill; no text reused). Decompose → route each task to the cheapest capable tier via a tier-discovery ladder → recon/distill before escalating → capped return contract; serial dispatch by default with explicit user opt-in to parallel. Triggers only on explicit request (\"orchestrate\", route-by-cost) — never proactively, to avoid colliding with cli-subagents and parallel-dispatch conventions.",
+      "status": "done"
     }
   ]
 }
