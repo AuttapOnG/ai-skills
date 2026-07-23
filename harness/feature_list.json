@@ -1,7 +1,7 @@
 {
   "project": "ai-skills",
   "version": "0.1",
-  "product_direction": "Public GitHub registry of AI-tool-neutral skills that any AI agent installs/updates by reading the repo protocol \u2014 no clone, no scripts, no symlinks.",
+  "product_direction": "Public GitHub registry of AI-tool-neutral skills that any AI agent installs/updates by reading the repo protocol — no clone, no scripts, no symlinks.",
   "spec": "docs/specs/2026-07-22-ai-skills-registry-design.md",
   "features": [
     {
@@ -13,7 +13,7 @@
     {
       "id": "AIS-002",
       "phase": 1,
-      "title": "Migrate & convert skills per spec \u00a77 (except worklog, update-tags): frontmatter + standard footer + neutrality pass",
+      "title": "Migrate & convert skills per spec §7 (except worklog, update-tags): frontmatter + standard footer + neutrality pass",
       "status": "done"
     },
     {
@@ -67,7 +67,7 @@
     {
       "id": "AIS-011",
       "phase": 3,
-      "title": "Decide xlsx-safe-export disposition (deferred from AIS-002): its core is a Python validator, which \u00a76.2 markdown-only forbids. Options: keep local-only like update-tags; add a maintainer-tooling carve-out to \u00a76.2; or ship an advisory markdown-only version. Requires a spec decision before any migration.",
+      "title": "Decide xlsx-safe-export disposition (deferred from AIS-002): its core is a Python validator, which §6.2 markdown-only forbids. Options: keep local-only like update-tags; add a maintainer-tooling carve-out to §6.2; or ship an advisory markdown-only version. Requires a spec decision before any migration.",
       "status": "done"
     },
     {
@@ -79,31 +79,31 @@
     {
       "id": "AIS-013",
       "phase": 4,
-      "title": "skill-updater enhancement: discover skills new in the registry \u2014 fetch registry index, report entries with no local folder, install only on confirmation (closes the new-skill blind spot). Landed via PR #2 (9ff443e); backfilled to harness post-merge.",
+      "title": "skill-updater enhancement: discover skills new in the registry — fetch registry index, report entries with no local folder, install only on confirmation (closes the new-skill blind spot). Landed via PR #2 (9ff443e); backfilled to harness post-merge.",
       "status": "done"
     },
     {
       "id": "AIS-014",
       "phase": 4,
-      "title": "Prevent skill\u2194harness drift \u2014 Layer 2: init.sh parity guard. WARN if any skills/<name> is not referenced anywhere in harness/ (word-boundary grep across feature_list.json + progress.md + notes). Local, no push. Backstop that catches drift from any publish path (incl. external PRs) at next session start.",
+      "title": "Prevent skill↔harness drift — Layer 2: init.sh parity guard. WARN if any skills/<name> is not referenced anywhere in harness/ (word-boundary grep across feature_list.json + progress.md + notes). Local, no push. Backstop that catches drift from any publish path (incl. external PRs) at next session start.",
       "status": "done"
     },
     {
       "id": "AIS-015",
       "phase": 4,
-      "title": "Prevent skill\u2194harness drift \u2014 Layer 1: teach skill-publisher to update the project's work-control memory when the target repo has one (guarded/tool-neutral: skip if no harness). Closes the self-publish path at source. Republished to main via PR #3 (rebase-merge, commit 4b349d0).",
+      "title": "Prevent skill↔harness drift — Layer 1: teach skill-publisher to update the project's work-control memory when the target repo has one (guarded/tool-neutral: skip if no harness). Closes the self-publish path at source. Republished to main via PR #3 (rebase-merge, commit 4b349d0).",
       "status": "done"
     },
     {
       "id": "AIS-016",
       "phase": 4,
-      "title": "Prevent skill\u2194harness drift \u2014 Layer 3: CONTRIBUTING note that maintainers record merged skills in harness/ (contributors don't touch it); ties to the init.sh parity warning.",
+      "title": "Prevent skill↔harness drift — Layer 3: CONTRIBUTING note that maintainers record merged skills in harness/ (contributors don't touch it); ties to the init.sh parity warning.",
       "status": "done"
     },
     {
       "id": "AIS-017",
       "phase": 4,
-      "title": "Add LICENSE (MIT, \u00a9 2026 Auttapong Tura). A public install/contribute registry with no license = full copyright by default, which forbids the reuse the INSTALL protocol depends on. Root LICENSE file covers all markdown skills; inbound=outbound for contributions.",
+      "title": "Add LICENSE (MIT, © 2026 Auttapong Tura). A public install/contribute registry with no license = full copyright by default, which forbids the reuse the INSTALL protocol depends on. Root LICENSE file covers all markdown skills; inbound=outbound for contributions.",
       "status": "done"
     },
     {
@@ -122,6 +122,18 @@
       "id": "AIS-020",
       "phase": 4,
       "title": "orchestrate skill: cost-optimized subagent routing, written tool-neutral from scratch (concept seen in a company-internal Claude-specific skill; no text reused). Decompose → route each task to the cheapest capable tier via a tier-discovery ladder → recon/distill before escalating → capped return contract; serial dispatch by default with explicit user opt-in to parallel. Triggers only on explicit request (\"orchestrate\", route-by-cost) — never proactively, to avoid colliding with cli-subagents and parallel-dispatch conventions.",
+      "status": "done"
+    },
+    {
+      "id": "AIS-021",
+      "phase": 4,
+      "title": "figma-to-html skill: Figma REST API → static HTML / design-context brief, rewritten from scratch as a markdown-only playbook (concept from an external Claude-specific skill whose core was a bundled Python script — v1 forbids bundled executables, so the playbook teaches the agent to drive the REST API and generate any needed code at run time). Token-based auth only, rate-limit discipline, fidelity-check loop.",
+      "status": "done"
+    },
+    {
+      "id": "AIS-022",
+      "phase": 4,
+      "title": "handoff skill: compact the current conversation into a handoff document a fresh agent can resume from (state, decisions, artifact pointers instead of duplicated content, suggested skills, redaction). Rewritten tool-neutral from a 16-line tool-specific command into a full playbook with a document template.",
       "status": "done"
     }
   ]

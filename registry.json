@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-23T02:38:25Z",
+  "generated_at": "2026-07-23T03:15:19Z",
   "skills": [
     {
       "name": "cli-subagents",
@@ -18,6 +18,18 @@
       "description": "Turn a rough prompt into a detailed, context-rich prompt — classify intent, research project context and codebase, and emit a copy-paste-ready enhanced prompt.",
       "path": "skills/enhance",
       "updated": "2026-07-22"
+    },
+    {
+      "name": "figma-to-html",
+      "description": "Export a Figma design to faithful static HTML, or to a compact design-context brief for LLM codegen, by driving the Figma REST API directly — parse the share link, fetch node subtrees (never the whole file), map auto-layout to flexbox, render vectors via Figma's image endpoint, respect rate limits, and verify against Figma's own render. Use when the user pastes a figma.com/design link and wants HTML, markup, a webpage, a design brief, or asks to diagnose a wrong Figma export.",
+      "path": "skills/figma-to-html",
+      "updated": "2026-07-23"
+    },
+    {
+      "name": "handoff",
+      "description": "Compact the current conversation into a self-contained handoff document a fresh agent can resume from — state, decisions with reasons, pointers to artifacts instead of duplicated content, suggested skills, and a redaction pass. Use when the user wants to end a session, move work to another agent or tool, or says \"write a handoff\", \"summarize for the next session\", \"prepare a context handover\".",
+      "path": "skills/handoff",
+      "updated": "2026-07-23"
     },
     {
       "name": "init-harness",
