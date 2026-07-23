@@ -8,6 +8,19 @@ Skills are **installed by reading this protocol** — there is no clone step, no
 and no symlinks. An agent fetches only the skill folder it wants, drops it into its own tool's
 skills directory, and records where it came from. Updates work the same way, in reverse.
 
+## Quick start (for humans)
+
+You don't run anything yourself — your AI agent does. Open your AI coding agent
+(any tool — Claude Code, Codex, Gemini CLI, …) and paste one of these:
+
+> Install skills from https://github.com/AuttapOnG/ai-skills — show me what's available first.
+
+> Update my skills installed from https://github.com/AuttapOnG/ai-skills.
+
+Your agent will read the protocols below, do the work, and report a verification
+checklist back to you. Everything below this section is addressed to the agent,
+not to you.
+
 > **This README is addressed to AI agents.** Each section states the *intent* and the *pass
 > criteria*; you choose your own mechanism (`curl`, `gh`, a built-in fetch tool, …). Every
 > protocol ends with a **Verify** checklist you must run and report back to your user.

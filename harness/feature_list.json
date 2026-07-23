@@ -111,6 +111,12 @@
       "phase": 4,
       "title": "README sync: add a License section; add the 'discover skills new in the registry' step to the UPDATE protocol (align with skill-updater/AIS-013); note that INSTALL/UPDATE/publish flows are also installable as meta-skills (skill-updater, skill-publisher).",
       "status": "done"
+    },
+    {
+      "id": "AIS-019",
+      "phase": 4,
+      "title": "README 'Quick start (for humans)' section: copy-paste prompts a human gives their own AI agent (install / update, matching the protocol trigger phrases), note that the agent reports the verify checklist back, and that everything below is addressed to agents. Placed after the intro, before the agent-addressed blockquote; protocols untouched. Spec §5 amended.",
+      "status": "done"
     }
   ]
 }

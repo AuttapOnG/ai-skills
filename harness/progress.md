@@ -2,9 +2,10 @@
 
 ## Current State
 
-**v1 COMPLETE (AIS-001→011); phase-4 follow-ups AIS-012→018.**
+**v1 COMPLETE (AIS-001→011); phase-4 follow-ups AIS-012→019.**
 AIS-012→016 done & live on main (skill-updater backfill + drift prevention, PR #3).
-AIS-017 (MIT LICENSE) + AIS-018 (README sync) done locally — pending push.
+AIS-017 (MIT LICENSE) + AIS-018 (README sync) done & pushed (02c670f).
+AIS-019 (README human quick-start) done locally — pending push.
 Public repo live at https://github.com/AuttapOnG/ai-skills with **9** tool-neutral, markdown-only
 skills, generated `registry.json`, README INSTALL/UPDATE protocol, full CONTRIBUTING, CI
 (`validate`, green), branch protection on `main`, and `tools/gen_registry.py`. Clean git identity
@@ -45,6 +46,7 @@ residual-risk note on force-pushed-away objects (see git-identity entries below)
 | AIS-016 | Drift prevention L3: CONTRIBUTING maintainer work-tracking note | done | [notes/AIS-016.md](notes/AIS-016.md) |
 | AIS-017 | LICENSE (MIT, © 2026 Auttapong Tura) | done | [notes/AIS-017.md](notes/AIS-017.md) |
 | AIS-018 | README sync (License section, UPDATE new-skills step, meta-skills note) | done | [notes/AIS-018.md](notes/AIS-018.md) |
+| AIS-019 | README "Quick start (for humans)" section (copy-paste prompts) | done | [notes/AIS-019.md](notes/AIS-019.md) |
 
 ## Cross-cutting decisions & events
 

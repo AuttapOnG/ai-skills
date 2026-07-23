@@ -96,6 +96,10 @@ to https://github.com/<you>/ai-skills (see its README for the protocol).
 
 ## §5 README protocol outline
 - **What is this** — one paragraph + what a good skill looks like (neutral, markdown-only).
+- **Quick start (for humans)** — right after the intro: copy-paste prompts the human gives
+  their own AI agent (install / update, matching the protocol triggers verbatim), a note that
+  the agent reports a verification checklist back, and that everything below the section is
+  addressed to agents, not humans. (Added 2026-07-23, AIS-019.)
 - **INSTALL (for AI agents)** — UC1 as checklist, ends with Verify: skill in the tool's own dir / provenance valid JSON / report every check to the user.
 - **UPDATE (for AI agents)** — UC2 + rules: always show commit log before overwriting; `local_modified` → ask 3-way.
 - **EDIT & CONTRIBUTE** — points to CONTRIBUTING.md.
