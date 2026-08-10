@@ -124,9 +124,9 @@ be batched.
 - Uniformly hard, small-footprint work — run it on the top tier directly.
 - Tightly coupled tasks sharing lots of state — rehydrating context across
   agents costs more than staying in the main session.
-- The user asked for delegation to an *external* CLI agent — that is a
-  different skill (e.g. cli-subagents), which moves work off this runtime's
-  quota entirely; this skill optimizes spend *within* it.
+- The user asked for delegation to an *external* CLI agent — that moves
+  work off this runtime's quota entirely and is outside this skill's scope;
+  this skill optimizes spend *within* it.
 
 ---
 *Distributed from [ai-skills](https://github.com/AuttapOnG/ai-skills).

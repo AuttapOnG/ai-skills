@@ -1,12 +1,6 @@
 {
-  "generated_at": "2026-07-23T03:15:19Z",
+  "generated_at": "2026-08-10T04:24:01Z",
   "skills": [
-    {
-      "name": "cli-subagents",
-      "description": "Delegate implementation work to locally installed CLI coding agents (e.g. Codex CLI, Gemini CLI) running as background subagents, so a written plan executes on their quota while you keep the spec, review, verification, and commit roles.",
-      "path": "skills/cli-subagents",
-      "updated": "2026-07-22"
-    },
     {
       "name": "commit",
       "description": "Create a git commit — derive the ticket id from the branch name, run the project's lint gate, optionally group atomic commits, and confirm the message first.",
@@ -41,7 +35,7 @@
       "name": "orchestrate",
       "description": "Turn the main session into a cost-optimized dispatcher — decompose the request, route each task to the cheapest subagent tier that can do it, keep each agent's context minimal, and dispatch one at a time unless the user trades cost for speed. Use ONLY when the user explicitly asks — \"orchestrate\", \"route by cost/difficulty\", \"use the cheapest model that can handle it\", \"minimize tokens\" — never proactively.",
       "path": "skills/orchestrate",
-      "updated": "2026-07-23"
+      "updated": "2026-08-10"
     },
     {
       "name": "pr",

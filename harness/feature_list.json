@@ -135,6 +135,12 @@
       "phase": 4,
       "title": "handoff skill: compact the current conversation into a handoff document a fresh agent can resume from (state, decisions, artifact pointers instead of duplicated content, suggested skills, redaction). Rewritten tool-neutral from a 16-line tool-specific command into a full playbook with a document template.",
       "status": "done"
+    },
+    {
+      "id": "AIS-023",
+      "phase": 4,
+      "title": "Retire cli-subagents: remove the skill from the registry. The owner ended the cross-CLI delegation workflow it served — Gemini CLI uninstalled, Codex now reachable via MCP (obsoleting the raw-CLI dispatch mechanics), and in-runtime cost routing already covered by orchestrate. skills/cli-subagents/ deleted, orchestrate cross-reference reworded, registry.json regenerated (11 skills).",
+      "status": "done"
     }
   ]
 }
