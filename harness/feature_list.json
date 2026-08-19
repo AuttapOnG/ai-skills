@@ -141,6 +141,12 @@
       "phase": 4,
       "title": "Retire cli-subagents: remove the skill from the registry. The owner ended the cross-CLI delegation workflow it served — Gemini CLI uninstalled, Codex now reachable via MCP (obsoleting the raw-CLI dispatch mechanics), and in-runtime cost routing already covered by orchestrate. skills/cli-subagents/ deleted, orchestrate cross-reference reworded, registry.json regenerated (11 skills).",
       "status": "done"
+    },
+    {
+      "id": "AIS-024",
+      "phase": 4,
+      "title": "init-harness v2: verification tiers + orchestration policy + template fixes. Replaces the blanket TDD mandate in the appended Feature Workflow with three verification tiers keyed to behavior change; adds Q10 orchestration style and an Agent Orchestration appended section (subagent findings recorded in harness notes); fixes review findings — spec status in YAML frontmatter so init.sh's approved-spec grep matches, PERMISSIVE allow list drops the invalid \"*\" glob, deletion/network hooks anchored to command position and cover unlink, LOW-autonomy pre-approvals resolve the init.sh contradiction, WORKING_STATE.md unified into harness memory, .gitkeep for .claude/commands/ and docs/plans/, description trimmed to triggers (SDO).",
+      "status": "done"
     }
   ]
 }

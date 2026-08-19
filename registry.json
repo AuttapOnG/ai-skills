@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-10T04:24:01Z",
+  "generated_at": "2026-08-19T07:09:11Z",
   "skills": [
     {
       "name": "commit",
@@ -27,9 +27,9 @@
     },
     {
       "name": "init-harness",
-      "description": "Use when initializing or upgrading a harness engineering scaffold in the current project — empty repos and projects with existing code, docs, or a partial harness alike. Surveys what exists, then creates or updates CLAUDE.md, AGENTS.md, init.sh, .claude/settings.json, and the harness/ work-control memory (feature_list.json, progress.md, per-feature notes).",
+      "description": "Use when initializing or upgrading a harness engineering scaffold in the current project — empty repos and projects with existing code, docs, or a partial harness alike, or when a project needs repo-local agent instructions, guardrails, and work-control memory set up.",
       "path": "skills/init-harness",
-      "updated": "2026-07-22"
+      "updated": "2026-08-19"
     },
     {
       "name": "orchestrate",

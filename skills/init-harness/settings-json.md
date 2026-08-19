@@ -12,7 +12,7 @@ Assemble the final file by picking the permission variant then appending the rel
   "permissions": {
     "allow": [
       "Read",
-      "Bash(git status)",
+      "Bash(git status*)",
       "Bash(git log*)",
       "Bash(git diff*)"
     ],
@@ -62,7 +62,16 @@ Assemble the final file by picking the permission variant then appending the rel
 ```json
 {
   "permissions": {
-    "allow": ["*"],
+    "allow": [
+      "Read",
+      "Edit",
+      "Write",
+      "Glob",
+      "Grep",
+      "Bash",
+      "WebFetch",
+      "WebSearch"
+    ],
     "deny": [
       "Bash(curl * | bash*)",
       "Bash(wget * | bash*)"
@@ -70,6 +79,10 @@ Assemble the final file by picking the permission variant then appending the rel
   }
 }
 ```
+
+Note: there is no allow-all wildcard — an unanchored glob like `"*"` is
+skipped with a warning. List the tools explicitly (a bare tool name allows
+all uses of that tool).
 
 ---
 
@@ -106,7 +119,7 @@ Assemble the final file by picking the permission variant then appending the rel
         "hooks": [
           {
             "type": "command",
-            "command": "bash -c 'cmd=$(jq -r \".tool_input.command\"); if echo \"$cmd\" | grep -qE \"^rm |^rmdir |git clean\"; then echo \"HARNESS: file deletion requires human approval\" >&2; exit 2; fi'"
+            "command": "bash -c 'cmd=$(jq -r \".tool_input.command\"); if echo \"$cmd\" | grep -qE \"(^|[;&|]) *(rm|rmdir|unlink) |git clean\"; then echo \"HARNESS: file deletion requires human approval\" >&2; exit 2; fi'"
           }
         ]
       }
@@ -126,7 +139,7 @@ Assemble the final file by picking the permission variant then appending the rel
         "hooks": [
           {
             "type": "command",
-            "command": "bash -c 'cmd=$(jq -r \".tool_input.command\"); if echo \"$cmd\" | grep -qE \"^curl |^wget |^fetch \"; then echo \"HARNESS: external network call requires human approval\" >&2; exit 2; fi'"
+            "command": "bash -c 'cmd=$(jq -r \".tool_input.command\"); if echo \"$cmd\" | grep -qE \"(^|[;&|]) *(curl|wget|fetch) \"; then echo \"HARNESS: external network call requires human approval\" >&2; exit 2; fi'"
           }
         ]
       },

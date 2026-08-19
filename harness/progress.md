@@ -2,12 +2,12 @@
 
 ## Current State
 
-**v1 COMPLETE (AIS-001→011); phase-4 follow-ups AIS-012→023.**
+**v1 COMPLETE (AIS-001→011); phase-4 follow-ups AIS-012→024.**
 AIS-012→016 done & live on main (skill-updater backfill + drift prevention, PR #3).
 AIS-017 (MIT LICENSE) + AIS-018 (README sync) done & pushed (02c670f).
 AIS-019 (README human quick-start) + AIS-020 (orchestrate) done & pushed.
-AIS-021/022 (figma-to-html, handoff) committed (a1f91a3) — pending push.
-AIS-023 (retire cli-subagents) done locally — pending push.
+AIS-021→023 (figma-to-html, handoff, retire cli-subagents) pushed to main.
+AIS-024 (init-harness v2: verification tiers, orchestration, template fixes) committed — pending push.
 Public repo live at https://github.com/AuttapOnG/ai-skills with **11** tool-neutral, markdown-only
 skills, generated `registry.json`, README INSTALL/UPDATE protocol, full CONTRIBUTING, CI
 (`validate`, green), branch protection on `main`, and `tools/gen_registry.py`. Clean git identity
@@ -53,6 +53,7 @@ residual-risk note on force-pushed-away objects (see git-identity entries below)
 | AIS-021 | figma-to-html skill (Figma REST API → static HTML / design brief) | done | [notes/AIS-021.md](notes/AIS-021.md) |
 | AIS-022 | handoff skill (conversation → resumable handoff document) | done | [notes/AIS-022.md](notes/AIS-022.md) |
 | AIS-023 | Retire cli-subagents (remove from registry) | done | [notes/AIS-023.md](notes/AIS-023.md) |
+| AIS-024 | init-harness v2 (verification tiers, orchestration, template fixes) | done | [notes/AIS-024.md](notes/AIS-024.md) |
 
 ## Cross-cutting decisions & events
 

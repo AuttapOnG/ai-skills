@@ -47,7 +47,7 @@ fi
 
 # 4. Load active spec
 echo "--- Active specs ---"
-if ls docs/specs/*.md 2>/dev/null | head -5 | xargs grep -l "status: approved" 2>/dev/null; then
+if ls docs/specs/*.md 2>/dev/null | xargs grep -l "status: approved" 2>/dev/null; then
   echo "Above specs are approved and ready"
 else
   echo "No approved specs found — create one in docs/specs/ before starting"

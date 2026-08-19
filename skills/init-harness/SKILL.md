@@ -1,6 +1,6 @@
 ---
 name: init-harness
-description: Use when initializing or upgrading a harness engineering scaffold in the current project — empty repos and projects with existing code, docs, or a partial harness alike. Surveys what exists, then creates or updates CLAUDE.md, AGENTS.md, init.sh, .claude/settings.json, and the harness/ work-control memory (feature_list.json, progress.md, per-feature notes).
+description: Use when initializing or upgrading a harness engineering scaffold in the current project — empty repos and projects with existing code, docs, or a partial harness alike, or when a project needs repo-local agent instructions, guardrails, and work-control memory set up.
 ---
 
 # init-harness
@@ -105,6 +105,14 @@ unknowns.
 > "What prefix should feature IDs use? (e.g. MP → MP-001, MP-002)"
 > Suggest 2-3 letter initials derived from the project name; accept free text.
 
+### Delegation Dimension
+
+**Q10 — Orchestration style:**
+> "When agents delegate work to subagents, what should they optimize for?"
+> - **cost-optimized** — cheapest capable tier, minimal briefs, sequential by default
+> - **balanced** — parallel where independent, tier matched to task difficulty
+> - **speed-first** — parallel fan-out by default, capable tiers freely
+
 ---
 
 ## Step 3: Generate Harness Files
@@ -134,6 +142,9 @@ Using the answers from Step 2, generate the files below. Read the supporting tem
 - STAGING variant: Q6 = staging AND Q7 ≠ secrets / PII (env var validation only)
 - EXPERIMENT/LOCAL variant: Q6 = experiment/local AND Q7 = no sensitive data (minimal checks)
 
+**Orchestration style (Q10) → "Agent Orchestration" appended section:**
+- Q10 selects the [ORCHESTRATION_RULE] paragraph in the Step 4 appended sections.
+
 ### Files to Generate
 
 Generate each file, substituting user answers into [PLACEHOLDERS]:
@@ -142,7 +153,7 @@ Generate each file, substituting user answers into [PLACEHOLDERS]:
 2. **`AGENTS.md`** — use agents-md.md template, same autonomy variant
 3. **`init.sh`** — use init-sh.md template, risk variant from Q6/Q7, make executable
 4. **`.claude/settings.json`** (or your runtime's equivalent) — use settings-json.md template, checkpoint hooks from Q5, permission variant from Q6/Q7
-5. **`.claude/commands/`** — create empty directory (placeholder for future commands)
+5. **`.claude/commands/.gitkeep`** — placeholder for future commands (git does not track empty directories)
 6. **`docs/specs/SPEC-TEMPLATE.md`** — spec template (inline below)
 7. **`docs/specs/example-spec.md`** — example spec (inline below)
 8. **`docs/adr/ADR-TEMPLATE.md`** — ADR template (inline below)
@@ -155,6 +166,7 @@ Generate each file, substituting user answers into [PLACEHOLDERS]:
 15. **`harness/progress.md`** — bounded progress memory (see Step 4)
 16. **`harness/notes/<PREFIX>-001.md`** — first feature note (see Step 4)
 17. **`harness/README.md`** — update discipline (see Step 4)
+18. **`docs/plans/.gitkeep`** — placeholder for the step-by-step plans referenced by the Feature Workflow
 
 Everything harness-related lives under the visible `harness/` directory —
 NOT a hidden `.harness/` — because these are working files humans and agents
@@ -171,10 +183,15 @@ work-control sections from Step 4 to both.
 ### docs/specs/SPEC-TEMPLATE.md
 
 ```markdown
+---
+status: draft
+date: YYYY-MM-DD
+---
+
 # Spec: [Feature Name]
 
-**Status:** draft | review | approved | implemented
-**Date:** YYYY-MM-DD
+Set `status` to draft, review, approved, or implemented — init.sh lists a
+spec as active once its frontmatter status becomes approved.
 
 ## Goal
 One sentence: what does this build and why?
@@ -199,10 +216,12 @@ How will we know this is done and correct?
 ### docs/specs/example-spec.md
 
 ```markdown
-# Spec: Add user authentication endpoint
+---
+status: implemented
+date: 2026-06-30
+---
 
-**Status:** approved
-**Date:** 2026-06-30
+# Spec: Add user authentication endpoint
 
 ## Goal
 Add a POST /auth/login endpoint that accepts email + password and returns a JWT token.
@@ -474,14 +493,6 @@ step-by-step plans in `docs/plans/`.
 ### Sections to append to CLAUDE.md (and, without tool-specific paths, AGENTS.md)
 
 ```markdown
-## Context & Memory Rules
-At the start of every session:
-1. Run `bash init.sh`
-2. Read `harness/progress.md` (Current State + Feature index)
-3. Load the feature you are working on: its entry in
-   `harness/feature_list.json` and its note file `harness/notes/[PREFIX]-NNN.md`
-4. Load any approved spec from `docs/specs/`
-
 ## Work Control (harness memory)
 `harness/feature_list.json` is the single source of truth for what is done
 and what is next. Follow the update discipline in `harness/README.md`:
@@ -494,15 +505,42 @@ and what is next. Follow the update discipline in `harness/README.md`:
 
 ## Feature Workflow
 New work follows: spec in `docs/specs/` (approved by the human) → plan in
-`docs/plans/` → feature entries in `harness/feature_list.json` → TDD
-execution (failing test → minimal code → pass → commit).
+`docs/plans/` → feature entries in `harness/feature_list.json` →
+execution at the verification tier below → commit.
+
+## Verification Tiers
+Pick the tier from what the change does to behavior:
+- **Changes or adds behavior** → full TDD: failing test first → minimal
+  code → pass → commit.
+- **Leaves behavior unchanged** (typo, comment, config value, rename,
+  refactor covered by existing tests) → no new test; run the existing
+  tests covering the touched code before claiming done.
+- **Spike / throwaway experiment** → tests optional; code that gets kept
+  re-enters the top tier before merge.
+
+During the red-green loop run only the tests for the current feature;
+run the full suite once before setting the feature `done`.
+
+## Agent Orchestration
+[ORCHESTRATION_RULE — one paragraph chosen by Q10:
+cost-optimized → "Route heavy reading, searching, and mechanical work to the
+cheapest capable agent tier. Give each subagent a minimal brief; subagents
+return conclusions only, never raw file dumps. Dispatch sequentially unless
+the human explicitly trades cost for speed."
+balanced → "Delegate independent subtasks to subagents in parallel. Match the
+tier to task difficulty: cheap tiers for reading and searching, capable tiers
+for design and review."
+speed-first → "Fan out independent work to subagents in parallel by default;
+prefer capable tiers. Cost is secondary to wall-clock time."]
+Findings from a subagent that affect the current feature are recorded in its
+note (`harness/notes/[PREFIX]-NNN.md`) before the feature is set `done`.
 ```
 
 Merge rules for existing CLAUDE.md / AGENTS.md content:
 - Keep all pre-existing content; place the new sections after it.
 - When an existing section overlaps semantically with a template section
   (e.g. an existing "Testing" note vs "Self-Verification Checklist", or
-  AGENTS.md's templated "Session Start" vs the list above), merge them into
+  an existing session ritual vs the template's "Session Start"), merge them into
   ONE section — fold the existing project-specific points into the template
   section rather than keeping two competing headings or lists.
 - `recommended_before` in feature entries: omit the field entirely unless
@@ -542,6 +580,7 @@ The harness was initialized using `/init-harness` based on the following project
 - Environment: [Q6 answer]
 - Sensitive data: [Q7 answer]
 - Deploy target: [Q8 answer]
+- Orchestration style: [Q10 answer]
 
 ## Decision
 Initialize a full harness scaffold with [autonomy level] autonomy constraints,
@@ -550,7 +589,7 @@ Initialize a full harness scaffold with [autonomy level] autonomy constraints,
 ## Consequences
 - Agents operating in this repo follow CLAUDE.md and AGENTS.md constraints
 - init.sh must be run at the start of each session
-- All risky actions are gated by settings.json hooks
+- Risky actions matching the chosen checkpoints are gated by settings.json hooks
 - Harness can be evolved by editing these files; changes should be recorded as new ADRs
 ```
 

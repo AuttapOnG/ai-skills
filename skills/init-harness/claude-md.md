@@ -17,16 +17,22 @@ Use the section matching the chosen autonomy level. Replace all [PLACEHOLDERS] w
 ## Context & Memory Rules
 At the start of every session:
 1. Run `bash init.sh`
-2. Read `docs/specs/` — load any spec marked `status: approved`
-3. Read `docs/adr/` — understand past decisions
-4. Check `git status` — do not proceed if there are unexpected uncommitted changes
+2. Read `harness/progress.md` (Current State + Feature index)
+3. Load the feature you are working on: its entry in
+   `harness/feature_list.json` and its note `harness/notes/[PREFIX]-NNN.md`
+4. Read `docs/specs/` — load any spec marked `status: approved`
+5. Read `docs/adr/` — understand past decisions
+6. Check `git status` — do not proceed if there are unexpected uncommitted changes
 
-Keep a running `WORKING_STATE.md` in project root during long tasks. Update it after each meaningful step.
+During long tasks, record state in the current feature's note after each meaningful step.
 
 ## Constraints (LOW AUTONOMY)
-You MUST ask for explicit approval before:
-- Creating, modifying, or deleting ANY file
-- Running any shell command
+Pre-approved (no need to ask): `bash init.sh` at session start, read-only
+commands (`git status`, `git log`, `git diff`, listing and reading files),
+and updates to the harness memory (`harness/progress.md`, `harness/notes/`).
+You MUST ask for explicit approval before anything else, including:
+- Creating, modifying, or deleting any other file
+- Running any other shell command
 - Making any network request
 - Installing any dependency
 - Committing or pushing to git
@@ -63,8 +69,11 @@ Before saying "done", verify:
 ## Context & Memory Rules
 At the start of every session:
 1. Run `bash init.sh`
-2. Read any spec in `docs/specs/` marked `status: approved`
-3. Check `git status`
+2. Read `harness/progress.md` (Current State + Feature index)
+3. Load the current feature's entry in `harness/feature_list.json` and its
+   note `harness/notes/[PREFIX]-NNN.md`
+4. Read any spec in `docs/specs/` marked `status: approved`
+5. Check `git status`
 
 ## Constraints (MEDIUM AUTONOMY)
 Proceed autonomously EXCEPT for these actions — always ask first:
@@ -105,13 +114,16 @@ Before saying "done", verify:
 ## Context & Memory Rules
 At the start of every session:
 1. Run `bash init.sh`
-2. Load any approved spec from `docs/specs/`
+2. Read `harness/progress.md` (Current State + Feature index)
+3. Load the current feature's entry in `harness/feature_list.json` and its
+   note `harness/notes/[PREFIX]-NNN.md`
+4. Load any approved spec from `docs/specs/`
 
 ## Constraints (HIGH AUTONOMY)
 You may act autonomously on all tasks. Maintain an audit trail:
-- Log every significant action to `WORKING_STATE.md`
+- Log every significant action in the current feature's note (`harness/notes/[PREFIX]-NNN.md`)
 - Commit frequently with descriptive messages
-- Never modify `.claude/settings.json` or `CLAUDE.md` without noting it in `WORKING_STATE.md`
+- Never modify `.claude/settings.json` or `CLAUDE.md` without recording it in the cross-cutting log in `harness/progress.md`
 
 ## Workflow
 1. Read spec → plan → execute → verify → commit
@@ -123,5 +135,5 @@ Before saying "done", verify:
 - [ ] Task matches spec
 - [ ] All tests pass
 - [ ] No secrets in diff
-- [ ] WORKING_STATE.md updated
+- [ ] Harness memory updated (feature note + progress.md)
 ```

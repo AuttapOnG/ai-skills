@@ -20,8 +20,10 @@ Replace all [PLACEHOLDERS] with user answers. Use the section matching autonomy 
 ## Session Start
 At the start of every session:
 1. Run `bash init.sh` if present
-2. Read any spec in `docs/specs/` marked approved
-3. Check for uncommitted changes — stop and ask if unexpected ones exist
+2. Read `harness/progress.md`, then the current feature's entry in
+   `harness/feature_list.json` and its note in `harness/notes/`
+3. Read any spec in `docs/specs/` marked approved
+4. Check for uncommitted changes — stop and ask if unexpected ones exist
 
 ## Rules (LOW AUTONOMY)
 - Ask before creating, modifying, or deleting any file
@@ -54,7 +56,8 @@ At the start of every session:
 
 ## Session Start
 1. Run `bash init.sh` if present
-2. Read approved specs in `docs/specs/`
+2. Read `harness/progress.md` and the current feature's note in `harness/notes/`
+3. Read approved specs in `docs/specs/`
 
 ## Rules (MEDIUM AUTONOMY)
 Ask before:
@@ -85,15 +88,16 @@ Proceed autonomously for all other actions.
 
 ## Session Start
 1. Run `bash init.sh` if present
-2. Load approved specs
+2. Read `harness/progress.md` and the current feature's note in `harness/notes/`
+3. Load approved specs
 
 ## Rules (HIGH AUTONOMY)
-Act autonomously. Log significant actions in WORKING_STATE.md.
+Act autonomously. Log significant actions in the current feature's note in `harness/notes/`.
 Prefer small reversible changes. Commit frequently.
 
 ## Self-Check
 - [ ] Matches spec
 - [ ] Tests pass
 - [ ] No secrets in diff
-- [ ] WORKING_STATE.md updated
+- [ ] Harness memory updated
 ```
