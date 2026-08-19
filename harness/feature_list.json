@@ -104,6 +104,13 @@
       "group": "phase-4",
       "title": "init-harness: feature grouping + archive discipline. Adds optional group field + top-level groups map to the feature_list.json schema; archive rule — when a group is fully done and the active list exceeds ~20 entries, move its entries to harness/archive/feature_list.json and collapse index rows into an Archived groups section in progress.md; note files never move. Dogfooded in this repo: AIS-001-011 tagged v1 and archived, AIS-012-025 tagged phase-4.",
       "status": "done"
+    },
+    {
+      "id": "AIS-026",
+      "phase": 4,
+      "group": "phase-4",
+      "title": "init-harness token-weight refactor: move all literal templates out of SKILL.md into three new markdown reference files — scaffold-templates.md (docs/specs, docs/adr incl. auto-generated init ADR, evals, traces), work-control.md (harness memory files + CLAUDE.md/AGENTS.md appended sections), references.md (curated source list). SKILL.md keeps workflow, Q&A, variant mapping, and merge rules only: 1,571 words, down ~48% per invocation. Content verified moved via signature grep; template retrieval smoke-tested.",
+      "status": "done"
     }
   ]
 }

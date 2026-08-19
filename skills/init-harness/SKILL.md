@@ -117,7 +117,15 @@ unknowns.
 
 ## Step 3: Generate Harness Files
 
-Using the answers from Step 2, generate the files below. Read the supporting template files in this skill directory for the content of each artifact.
+Using the answers from Step 2, generate the files below. Every artifact's
+content lives in a template file in this skill directory — read the one you
+need when generating that artifact:
+
+- **claude-md.md** / **agents-md.md** — instruction files, per autonomy variant
+- **init-sh.md** — session bootstrap script, per risk variant
+- **settings-json.md** — permissions + checkpoint hooks
+- **scaffold-templates.md** — docs/specs, docs/adr (incl. the auto-generated init ADR), harness/evals, harness/traces
+- **work-control.md** — harness memory files + sections to append to CLAUDE.md/AGENTS.md
 
 ### Answer → Variant Mapping
 
@@ -143,7 +151,7 @@ Using the answers from Step 2, generate the files below. Read the supporting tem
 - EXPERIMENT/LOCAL variant: Q6 = experiment/local AND Q7 = no sensitive data (minimal checks)
 
 **Orchestration style (Q10) → "Agent Orchestration" appended section:**
-- Q10 selects the [ORCHESTRATION_RULE] paragraph in the Step 4 appended sections.
+- Q10 selects the [ORCHESTRATION_RULE] paragraph in work-control.md's appended sections.
 
 ### Files to Generate
 
@@ -154,18 +162,18 @@ Generate each file, substituting user answers into [PLACEHOLDERS]:
 3. **`init.sh`** — use init-sh.md template, risk variant from Q6/Q7, make executable
 4. **`.claude/settings.json`** (or your runtime's equivalent) — use settings-json.md template, checkpoint hooks from Q5, permission variant from Q6/Q7
 5. **`.claude/commands/.gitkeep`** — placeholder for future commands (git does not track empty directories)
-6. **`docs/specs/SPEC-TEMPLATE.md`** — spec template (inline below)
-7. **`docs/specs/example-spec.md`** — example spec (inline below)
-8. **`docs/adr/ADR-TEMPLATE.md`** — ADR template (inline below)
-9. **`docs/adr/0001-harness-init.md`** — auto-generated ADR for this initialization
-10. **`harness/evals/eval-template.md`** — eval scaffold (inline below)
-11. **`harness/evals/README.md`** — eval instructions (inline below)
-12. **`harness/traces/otel-stub.yaml`** — OpenTelemetry stub (inline below)
-13. **`harness/traces/README.md`** — observability instructions (inline below)
-14. **`harness/feature_list.json`** — work-control queue (see Step 4)
-15. **`harness/progress.md`** — bounded progress memory (see Step 4)
-16. **`harness/notes/<PREFIX>-001.md`** — first feature note (see Step 4)
-17. **`harness/README.md`** — update discipline (see Step 4)
+6. **`docs/specs/SPEC-TEMPLATE.md`** — spec template (scaffold-templates.md)
+7. **`docs/specs/example-spec.md`** — example spec (scaffold-templates.md)
+8. **`docs/adr/ADR-TEMPLATE.md`** — ADR template (scaffold-templates.md)
+9. **`docs/adr/0001-harness-init.md`** — ADR for this initialization, auto-generated from the Q&A answers (template in scaffold-templates.md)
+10. **`harness/evals/eval-template.md`** — eval scaffold (scaffold-templates.md)
+11. **`harness/evals/README.md`** — eval instructions (scaffold-templates.md)
+12. **`harness/traces/otel-stub.yaml`** — OpenTelemetry stub (scaffold-templates.md)
+13. **`harness/traces/README.md`** — observability instructions (scaffold-templates.md)
+14. **`harness/feature_list.json`** — work-control queue (work-control.md; seeding rules in Step 4)
+15. **`harness/progress.md`** — bounded progress memory (work-control.md)
+16. **`harness/notes/<PREFIX>-001.md`** — first feature note (work-control.md)
+17. **`harness/README.md`** — update discipline incl. group archiving (work-control.md)
 18. **`docs/plans/.gitkeep`** — placeholder for the step-by-step plans referenced by the Feature Workflow
 
 Everything harness-related lives under the visible `harness/` directory —
@@ -174,196 +182,7 @@ open constantly (lesson from MarketPlaceProxy: the split caused confusion and
 had to be merged).
 
 After generating CLAUDE.md and AGENTS.md from their templates, append the
-work-control sections from Step 4 to both.
-
----
-
-## Inline Templates (Small Static Files)
-
-### docs/specs/SPEC-TEMPLATE.md
-
-```markdown
----
-status: draft
-date: YYYY-MM-DD
----
-
-# Spec: [Feature Name]
-
-Set `status` to draft, review, approved, or implemented — init.sh lists a
-spec as active once its frontmatter status becomes approved.
-
-## Goal
-One sentence: what does this build and why?
-
-## Background
-What context does the agent need to understand the request?
-
-## Requirements
-- [ ] Requirement 1
-- [ ] Requirement 2
-
-## Out of Scope
-What this spec explicitly does NOT cover.
-
-## Success Criteria
-How will we know this is done and correct?
-
-## Open Questions
-- Question 1
-```
-
-### docs/specs/example-spec.md
-
-```markdown
----
-status: implemented
-date: 2026-06-30
----
-
-# Spec: Add user authentication endpoint
-
-## Goal
-Add a POST /auth/login endpoint that accepts email + password and returns a JWT token.
-
-## Background
-The app currently has no authentication. Users are identified by session only.
-The agent should not modify any existing endpoints or database schema.
-
-## Requirements
-- [ ] POST /auth/login accepts { email, password }
-- [ ] Returns { token, expiresAt } on success
-- [ ] Returns 401 on invalid credentials
-- [ ] Token expires in 24 hours
-
-## Out of Scope
-- Registration endpoint
-- Password reset
-- OAuth / social login
-
-## Success Criteria
-- curl -X POST /auth/login -d '{"email":"test@example.com","password":"secret"}' returns 200 with token
-- Invalid password returns 401
-- Token validates with jwt.verify()
-```
-
-### docs/adr/ADR-TEMPLATE.md
-
-```markdown
-# ADR-NNNN: [Decision Title]
-
-**Date:** YYYY-MM-DD
-**Status:** proposed | accepted | deprecated | superseded
-
-## Context
-What is the situation that requires a decision?
-
-## Decision
-What was decided?
-
-## Consequences
-What are the positive and negative outcomes of this decision?
-```
-
-### harness/evals/eval-template.md
-
-```markdown
-# Eval: [Task Name]
-
-**Purpose:** Verify the agent can [specific capability] correctly.
-
-## Setup
-```bash
-# Commands to set up the test environment
-```
-
-## Task Prompt
-Give the agent exactly this prompt:
-> [Exact prompt text]
-
-## Verifier
-Run after the agent claims completion:
-```bash
-# Deterministic check command
-# Expected output or exit code
-```
-
-## Pass Criteria
-- [ ] Criterion 1
-- [ ] Criterion 2
-
-## Baseline (no skill)
-Without the skill, the agent typically: [describe failure mode]
-```
-
-### harness/evals/README.md
-
-```markdown
-# Evals
-
-Agent behavior evaluations for this project.
-
-## Running an Eval
-
-1. Set up the environment per the eval's Setup section
-2. Give the agent the exact Task Prompt
-3. Run the Verifier commands after completion
-4. Record pass/fail in the eval file
-
-## Adding Evals
-
-Copy eval-template.md, fill in all sections, commit.
-Run the baseline (without any skill) first — document what the agent does wrong.
-Then add or update the skill, re-run, verify it now passes.
-```
-
-### harness/traces/otel-stub.yaml
-
-```yaml
-# OpenTelemetry configuration stub
-# Uncomment and configure to enable agent observability
-#
-# See: https://opentelemetry.io/docs/specs/semconv/gen-ai/
-# for GenAI semantic conventions
-
-# exporters:
-#   otlp:
-#     endpoint: http://localhost:4317
-#     protocol: grpc
-
-# service:
-#   name: [PROJECT_NAME]-agent
-#   version: 0.1.0
-
-# instrumentation:
-#   gen_ai:
-#     capture_message_content: true   # set false in production with PII
-```
-
-### harness/traces/README.md
-
-```markdown
-# Traces
-
-Observability configuration for agent sessions.
-
-## Enabling Tracing
-
-1. Edit `otel-stub.yaml` and uncomment the relevant sections
-2. Set your OTLP endpoint
-3. Set `OTEL_EXPORTER_OTLP_ENDPOINT` env var or configure in `.claude/settings.json`
-
-## What to Instrument
-
-Follow [OpenTelemetry GenAI semantic conventions](https://opentelemetry.io/docs/specs/semconv/gen-ai/):
-- Each tool call → one span
-- Each agent turn → one parent span
-- Token counts as span attributes
-
-## Warning
-
-Do not enable `capture_message_content: true` in production if the project handles PII.
-```
+work-control sections from work-control.md to both.
 
 ---
 
@@ -377,181 +196,13 @@ acceptance criteria describing what verifiably exists), in-flight work →
 harness initialization itself, status `done`. If a feature_list.json already
 exists, preserve its entries and IDs — only append and update statuses.
 
-### harness/feature_list.json
-
-```json
-{
-  "project": "[PROJECT_NAME]",
-  "version": "0.1",
-  "product_direction": "[One sentence from Q1/Q2 answers or existing README]",
-  "groups": {
-    "harness": "Stand up and evolve the agent harness"
-  },
-  "features": [
-    {
-      "id": "[PREFIX]-001",
-      "title": "Create project harness",
-      "status": "done",
-      "priority": "high",
-      "group": "harness",
-      "description": "Initialize the harness engineering scaffold and work-control memory.",
-      "acceptance_criteria": [
-        "CLAUDE.md, AGENTS.md, init.sh, and .claude/settings.json exist with the chosen autonomy rules and checkpoint hooks.",
-        "harness/feature_list.json tracks the implementation queue.",
-        "harness/progress.md records initial decisions.",
-        "docs/adr/0001-harness-init.md records the harness profile."
-      ]
-    }
-  ]
-}
-```
-
-Feature entry schema: `id`, `title`, `status` (pending | in_progress | done),
-`priority` (high | medium | low), `description`, `acceptance_criteria`
-(verifiable, concrete), optional `group` (key into the top-level `groups`
-map — a short epic/phase/milestone name, each mapped to a one-line goal),
-optional `recommended_before` (list of feature IDs this should precede).
-
-### harness/progress.md
-
-```markdown
-# Progress
-
-## Current State
-
-[2-4 lines: where the project stands right now and what is next.]
-
-## Feature index
-
-| ID | Title | Status | Note |
-|---|---|---|---|
-| [PREFIX]-001 | Create project harness | done | [notes/[PREFIX]-001.md](notes/[PREFIX]-001.md) |
-
-## Cross-cutting decisions & events
-
-- YYYY-MM-DD — [dated, one bullet per decision that affects more than one feature]
-
-## Archived groups
-
-- [group] — [N] features, archived YYYY-MM-DD → archive/feature_list.json
-```
-
-Exactly these sections (Archived groups appears once something has been
-archived) — no per-feature day-by-day detail lives here.
-
-### harness/notes/[PREFIX]-001.md
-
-```markdown
-# [PREFIX]-001 — Create project harness
-
-**Status:** done (YYYY-MM-DD)
-
-## Notes
-
-- Harness initialized via /init-harness; profile in docs/adr/0001-harness-init.md.
-- [Anything discovered during the Step 1 survey worth remembering.]
-```
-
-For every other feature seeded from the survey, create a stub note:
-
-```markdown
-# [PREFIX]-NNN — [Title]
-
-**Status:** [status]
-
-Acceptance criteria: harness/feature_list.json ([PREFIX]-NNN).
-
-## Notes
-
-(Record decisions, surprises, and gotchas here while implementing.)
-```
-
-### harness/README.md
-
-```markdown
-# Harness memory
-
-How agents track and control work in this repo.
-
-## Files
-
-- `feature_list.json` — the implementation queue. Every unit of work is a
-  feature with an ID ([PREFIX]-NNN), status (`pending` / `in_progress` /
-  `done`), priority, and acceptance criteria. Single source of truth for
-  what is done and what is next.
-- `progress.md` — slim, bounded memory with exactly three sections:
-  **Current State**, **Feature index**, **Cross-cutting decisions & events**.
-- `notes/[PREFIX]-NNN.md` — one note file per feature: decisions, gotchas,
-  and implementation details, so agents only load what a feature needs.
-- `archive/feature_list.json` — append-only archive of retired feature
-  entries (same schema). Active list + archive together are the full
-  record; feature IDs are never reused.
-- `evals/` — agent behavior evaluations. `traces/` — observability stub.
-
-## Update discipline
-
-1. Set a feature `in_progress` in `feature_list.json` before starting it.
-2. Record decisions and surprises in `notes/[PREFIX]-NNN.md` as you go.
-3. On completion: verify every acceptance criterion, set status `done`,
-   update **Current State** and the **Feature index** in `progress.md`.
-4. Decisions affecting more than one feature go in **Cross-cutting
-   decisions & events** (dated, one bullet each).
-5. New work discovered mid-feature becomes a NEW feature entry — never
-   silently expand scope.
-6. When every feature in a group is `done` and the active list exceeds
-   ~20 entries, move that group's entries to `archive/feature_list.json`
-   and collapse their Feature-index rows into one line under **Archived
-   groups** in `progress.md`. Never move or delete note files.
-
-Environment bootstrap: `bash init.sh`. Specs live in `docs/specs/`;
-step-by-step plans in `docs/plans/`.
-```
-
-### Sections to append to CLAUDE.md (and, without tool-specific paths, AGENTS.md)
-
-```markdown
-## Work Control (harness memory)
-`harness/feature_list.json` is the single source of truth for what is done
-and what is next. Follow the update discipline in `harness/README.md`:
-- Set a feature `in_progress` before starting; `done` only after every
-  acceptance criterion is verified.
-- Per-feature details go in `harness/notes/[PREFIX]-NNN.md`; cross-feature
-  decisions go in the dated cross-cutting log in `harness/progress.md`.
-- New work discovered mid-feature becomes a new feature entry — never
-  silently expand scope.
-
-## Feature Workflow
-New work follows: spec in `docs/specs/` (approved by the human) → plan in
-`docs/plans/` → feature entries in `harness/feature_list.json` →
-execution at the verification tier below → commit.
-
-## Verification Tiers
-Pick the tier from what the change does to behavior:
-- **Changes or adds behavior** → full TDD: failing test first → minimal
-  code → pass → commit.
-- **Leaves behavior unchanged** (typo, comment, config value, rename,
-  refactor covered by existing tests) → no new test; run the existing
-  tests covering the touched code before claiming done.
-- **Spike / throwaway experiment** → tests optional; code that gets kept
-  re-enters the top tier before merge.
-
-During the red-green loop run only the tests for the current feature;
-run the full suite once before setting the feature `done`.
-
-## Agent Orchestration
-[ORCHESTRATION_RULE — one paragraph chosen by Q10:
-cost-optimized → "Route heavy reading, searching, and mechanical work to the
-cheapest capable agent tier. Give each subagent a minimal brief; subagents
-return conclusions only, never raw file dumps. Dispatch sequentially unless
-the human explicitly trades cost for speed."
-balanced → "Delegate independent subtasks to subagents in parallel. Match the
-tier to task difficulty: cheap tiers for reading and searching, capable tiers
-for design and review."
-speed-first → "Fan out independent work to subagents in parallel by default;
-prefer capable tiers. Cost is secondary to wall-clock time."]
-Findings from a subagent that affect the current feature are recorded in its
-note (`harness/notes/[PREFIX]-NNN.md`) before the feature is set `done`.
-```
+All literal templates for this layer live in **work-control.md**:
+`feature_list.json` (with the feature entry schema and the `groups` map),
+`progress.md`, the note files, `harness/README.md` (update discipline
+including group archiving), and the sections to append to CLAUDE.md and
+AGENTS.md (Work Control, Feature Workflow, Verification Tiers, Agent
+Orchestration). Generate from those templates, then apply the merge rules
+below.
 
 Merge rules for existing CLAUDE.md / AGENTS.md content:
 - Keep all pre-existing content; place the new sections after it.
@@ -575,75 +226,11 @@ project's checkpoint rules gate commits, ask the human instead.
 
 ---
 
-## ADR Auto-Generation
-
-For `docs/adr/0001-harness-init.md`, generate content using the user's actual Q&A answers:
-
-```markdown
-# ADR-0001: Harness Initialization
-
-**Date:** [today's date]
-**Status:** accepted
-
-## Context
-This project needed a harness engineering scaffold to make agent work reliable and observable.
-The harness was initialized using `/init-harness` based on the following project profile:
-
-- Project type: [Q1 answer]
-- Stack: [Q2 answer]
-- Team size: [Q3 answer]
-- Autonomy level: [Q4 answer]
-- Checkpoints: [Q5 answer]
-- Environment: [Q6 answer]
-- Sensitive data: [Q7 answer]
-- Deploy target: [Q8 answer]
-- Orchestration style: [Q10 answer]
-
-## Decision
-Initialize a full harness scaffold with [autonomy level] autonomy constraints,
-[checkpoint list] checkpoints, and [permission variant] permissions.
-
-## Consequences
-- Agents operating in this repo follow CLAUDE.md and AGENTS.md constraints
-- init.sh must be run at the start of each session
-- Risky actions matching the chosen checkpoints are gated by settings.json hooks
-- Harness can be evolved by editing these files; changes should be recorded as new ADRs
-```
-
----
-
 ## Authoritative References
 
-The following resources inform what goes into each generated file:
-
-### Foundations
-- [Effective harnesses for long-running agents](https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents) — initializer agents, init.sh, self-verification, handoff artifacts
-- [Harness design for long-running application development](https://www.anthropic.com/engineering/harness-design-long-running-apps) — task state, evaluator design
-- [Harness engineering: leveraging Codex in an agent-first world](https://openai.com/index/harness-engineering/) — architectural constraints, repo-local instructions, telemetry
-- [Harness Engineering — Thoughtworks](https://martinfowler.com/articles/exploring-gen-ai/harness-engineering.html) — context engineering, architectural constraints, entropy management
-- [Skill Issue: Harness Engineering for Coding Agents](https://www.humanlayer.dev/blog/skill-issue-harness-engineering-for-coding-agents) — weak results are often harness problems, not model problems
-
-### Context & Memory
-- [Effective context engineering for AI agents](https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents) — context window as working memory budget
-- [Writing a good CLAUDE.md](https://www.humanlayer.dev/blog/writing-a-good-claude-md) — durable, repo-local instructions
-
-### Constraints & Guardrails
-- [Beyond permission prompts](https://www.anthropic.com/engineering/claude-code-sandboxing) — sandboxing, policy design
-- [Writing effective tools for agents](https://www.anthropic.com/engineering/writing-tools-for-agents) — safe, inspectable tool boundaries
-- [12 Factor Agents](https://www.humanlayer.dev/blog/12-factor-agents) — explicit prompts, state ownership, pause-resume behavior
-- [Mitigating Prompt Injection Attacks](https://openhands.dev/blog/mitigating-prompt-injection-attacks-in-software-agents) — confirmation mode, analyzers, hard policies
-
-### Specs & Workflow
-- [AGENTS.md format](https://github.com/agentsmd/agents.md) — portable cross-runtime instruction format
-- [GitHub Spec Kit](https://github.com/github/spec-kit) — spec-driven development toolkit
-- [12-Factor AgentOps](https://www.12factoragentops.com/) — context discipline, validation, reproducible workflows
-
-### Evals & Observability
-- [Demystifying Evals for AI Agents](https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents) — what to measure in agent systems
-- [OpenTelemetry Semantic Conventions for GenAI](https://opentelemetry.io/docs/specs/semconv/gen-ai/) — portable observability conventions
-- [Testing Agent Skills Systematically](https://developers.openai.com/blog/eval-skills/) — JSONL logs, deterministic checks
-
-**Full curated list:** https://github.com/walkinglabs/awesome-harness-engineering
+The curated sources behind each generated file are listed in
+**references.md** in this skill directory.
+Full list: https://github.com/walkinglabs/awesome-harness-engineering
 
 ---
 *Distributed from [ai-skills](https://github.com/AuttapOnG/ai-skills).
