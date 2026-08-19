@@ -111,6 +111,13 @@
       "group": "phase-4",
       "title": "init-harness token-weight refactor: move all literal templates out of SKILL.md into three new markdown reference files — scaffold-templates.md (docs/specs, docs/adr incl. auto-generated init ADR, evals, traces), work-control.md (harness memory files + CLAUDE.md/AGENTS.md appended sections), references.md (curated source list). SKILL.md keeps workflow, Q&A, variant mapping, and merge rules only: 1,571 words, down ~48% per invocation. Content verified moved via signature grep; template retrieval smoke-tested.",
       "status": "done"
+    },
+    {
+      "id": "AIS-027",
+      "phase": 4,
+      "group": "phase-4",
+      "title": "init-harness dogfood fixes + committed evals. From the first real-world run (design-canvas project, non-code, non-git): Q5 checkpoints now accept free-text answers with a mapping rule to compose+test a custom hook; a generation note appends a verification analog to Verification Tiers when the survey finds no test suite; Step 5 gains git init for non-git projects. Adds harness/evals/init-harness-greenfield.md and init-harness-converge.md capturing the dogfood run as baseline. Drift checks deliberately deferred (observed staleness was semantic, not structural).",
+      "status": "done"
     }
   ]
 }

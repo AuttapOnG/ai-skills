@@ -79,6 +79,7 @@ unknowns.
 > - before file deletion
 > - before external API / network calls
 > - never (fully autonomous)
+> Free-text answers are welcome — e.g. "only irreversible git actions".
 
 ### Risk Dimension
 
@@ -139,6 +140,10 @@ need when generating that artifact:
 - "before file deletion" → add PreToolUse hook blocking `rm`, `rmdir`, `unlink`, `git clean`
 - "before external API / network calls" → add PreToolUse hook blocking `curl`, `wget`, `fetch`
 - "never" → no hooks (omit hooks section)
+- any other (free-text) answer → compose a custom PreToolUse hook from the
+  stated intent using observable command patterns, then test the regex
+  against sample commands (both blocked and allowed) before writing
+  settings.json
 
 **Permissions (Q6 + Q7) → settings.json variant:**
 - STRICT if Q6 = production OR Q7 = secrets / PII
@@ -218,6 +223,8 @@ Merge rules for existing CLAUDE.md / AGENTS.md content:
 
 ## Step 5: Commit
 
+If the project is not yet a git repository, run `git init -b main` first
+and record that in the cross-cutting log in `harness/progress.md`.
 Finish by committing the scaffold (one commit, message
 `chore: initialize harness engineering scaffold` or
 `chore: upgrade harness scaffold` when converging an existing project).

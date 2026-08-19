@@ -2,14 +2,15 @@
 
 ## Current State
 
-**v1 COMPLETE (AIS-001→011); phase-4 follow-ups AIS-012→026.**
+**v1 COMPLETE (AIS-001→011); phase-4 follow-ups AIS-012→027.**
 AIS-012→016 done & live on main (skill-updater backfill + drift prevention, PR #3).
 AIS-017 (MIT LICENSE) + AIS-018 (README sync) done & pushed (02c670f).
 AIS-019 (README human quick-start) + AIS-020 (orchestrate) done & pushed.
 AIS-021→023 (figma-to-html, handoff, retire cli-subagents) pushed to main.
 AIS-024 (init-harness v2) pushed to main (ee04b98).
 AIS-025 (init-harness grouping + archive discipline; dogfooded — v1 archived) pushed to main (7591152).
-AIS-026 (init-harness token-weight refactor: SKILL.md 1,571 words, templates in 3 reference files) committed — pending push.
+AIS-026 (init-harness token-weight refactor) pushed to main (2a89c9d).
+AIS-027 (init-harness dogfood fixes + evals from first real-world run) committed — pending push.
 Public repo live at https://github.com/AuttapOnG/ai-skills with **11** tool-neutral, markdown-only
 skills, generated `registry.json`, README INSTALL/UPDATE protocol, full CONTRIBUTING, CI
 (`validate`, green), branch protection on `main`, and `tools/gen_registry.py`. Clean git identity
@@ -47,6 +48,7 @@ residual-risk note on force-pushed-away objects (see git-identity entries below)
 | AIS-024 | init-harness v2 (verification tiers, orchestration, template fixes) | done | [notes/AIS-024.md](notes/AIS-024.md) |
 | AIS-025 | init-harness grouping + archive discipline (dogfooded: v1 archived) | done | [notes/AIS-025.md](notes/AIS-025.md) |
 | AIS-026 | init-harness token-weight refactor (templates → 3 reference files) | done | [notes/AIS-026.md](notes/AIS-026.md) |
+| AIS-027 | init-harness dogfood fixes + committed evals | done | [notes/AIS-027.md](notes/AIS-027.md) |
 
 ## Cross-cutting decisions & events
 

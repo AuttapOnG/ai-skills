@@ -177,3 +177,10 @@ prefer capable tiers. Cost is secondary to wall-clock time."]
 Findings from a subagent that affect the current feature are recorded in its
 note (`harness/notes/[PREFIX]-NNN.md`) before the feature is set `done`.
 ```
+
+Generation note — Verification Tiers: if the Step 1 survey found no test
+suite (no test framework in the manifests, no test directory), append one
+line to the generated Verification Tiers section stating this project's
+verification analog — what "tests pass" means here (e.g. for a design
+canvas: open the canvas, verify the artboard against the approved spec,
+capture a screenshot).
