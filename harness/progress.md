@@ -2,12 +2,13 @@
 
 ## Current State
 
-**v1 COMPLETE (AIS-001→011); phase-4 follow-ups AIS-012→024.**
+**v1 COMPLETE (AIS-001→011); phase-4 follow-ups AIS-012→025.**
 AIS-012→016 done & live on main (skill-updater backfill + drift prevention, PR #3).
 AIS-017 (MIT LICENSE) + AIS-018 (README sync) done & pushed (02c670f).
 AIS-019 (README human quick-start) + AIS-020 (orchestrate) done & pushed.
 AIS-021→023 (figma-to-html, handoff, retire cli-subagents) pushed to main.
-AIS-024 (init-harness v2: verification tiers, orchestration, template fixes) committed — pending push.
+AIS-024 (init-harness v2) pushed to main (ee04b98).
+AIS-025 (init-harness grouping + archive discipline; dogfooded — v1 archived) committed — pending push.
 Public repo live at https://github.com/AuttapOnG/ai-skills with **11** tool-neutral, markdown-only
 skills, generated `registry.json`, README INSTALL/UPDATE protocol, full CONTRIBUTING, CI
 (`validate`, green), branch protection on `main`, and `tools/gen_registry.py`. Clean git identity
@@ -30,17 +31,6 @@ residual-risk note on force-pushed-away objects (see git-identity entries below)
 
 | ID | Title | Status | Note |
 |---|---|---|---|
-| AIS-001 | Repo bootstrap (git init, harness, spec, GitHub repo) | done | [notes/AIS-001.md](notes/AIS-001.md) |
-| AIS-002 | Migrate & convert skills per spec §7 | done | [notes/AIS-002.md](notes/AIS-002.md) |
-| AIS-003 | README protocol (INSTALL/UPDATE) | done | [notes/AIS-003.md](notes/AIS-003.md) |
-| AIS-004 | Registry generator + first registry.json + UC1 acceptance | done | [notes/AIS-004.md](notes/AIS-004.md) |
-| AIS-005 | Provenance + full UPDATE protocol | done | [notes/AIS-005.md](notes/AIS-005.md) |
-| AIS-006 | CONTRIBUTING.md + branch protection | done | [notes/AIS-006.md](notes/AIS-006.md) |
-| AIS-007 | CI validate.yml | done | [notes/AIS-007.md](notes/AIS-007.md) |
-| AIS-008 | skill-publisher meta-skill | done | [notes/AIS-008.md](notes/AIS-008.md) |
-| AIS-009 | Generalize worklog and publish | done | [notes/AIS-009.md](notes/AIS-009.md) |
-| AIS-010 | Test matrix UC1–UC4 on Claude Code + Codex | done | [notes/AIS-010.md](notes/AIS-010.md) |
-| AIS-011 | Decide xlsx-safe-export disposition (deferred from AIS-002) | done | [notes/AIS-011.md](notes/AIS-011.md) |
 | AIS-012 | skill-updater meta-skill (base UPDATE/UC2 flow) | done | [notes/AIS-012.md](notes/AIS-012.md) |
 | AIS-013 | skill-updater: discover skills new in the registry | done | [notes/AIS-013.md](notes/AIS-013.md) |
 | AIS-014 | Drift prevention L2: init.sh skill↔harness parity guard | done | [notes/AIS-014.md](notes/AIS-014.md) |
@@ -54,6 +44,7 @@ residual-risk note on force-pushed-away objects (see git-identity entries below)
 | AIS-022 | handoff skill (conversation → resumable handoff document) | done | [notes/AIS-022.md](notes/AIS-022.md) |
 | AIS-023 | Retire cli-subagents (remove from registry) | done | [notes/AIS-023.md](notes/AIS-023.md) |
 | AIS-024 | init-harness v2 (verification tiers, orchestration, template fixes) | done | [notes/AIS-024.md](notes/AIS-024.md) |
+| AIS-025 | init-harness grouping + archive discipline (dogfooded: v1 archived) | done | [notes/AIS-025.md](notes/AIS-025.md) |
 
 ## Cross-cutting decisions & events
 
@@ -165,3 +156,7 @@ residual-risk note on force-pushed-away objects (see git-identity entries below)
   solo maintainer); historical specs/plans/notes left untouched. orchestrate's "When NOT to
   use" cross-reference reworded. Owner-side cleanup (local install + personal runtime-config
   trigger sentence) done outside this repo. Done locally; awaiting the human push.
+
+## Archived groups
+
+- v1 — 11 features (AIS-001→011), archived 2026-08-19 → [archive/feature_list.json](archive/feature_list.json)

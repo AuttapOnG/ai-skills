@@ -6,6 +6,7 @@ Work-control memory for developing the ai-skills registry.
 
 - **Design docs live under the top-level `docs/`** (sibling of `harness/`): `docs/specs/` (approved designs — start with `2026-07-22-ai-skills-registry-design.md`, the single source of truth; new specs from `SPEC-TEMPLATE.md`), `docs/adr/` (decision records, from `0001-harness-init.md`), `docs/plans/` (implementation plans).
 - `feature_list.json` — the implementation queue. Every unit of work is a feature with an ID (AIS-NNN), phase, and status (`pending` / `in_progress` / `done`). Single source of truth for what is done and what is next.
+- `archive/feature_list.json` — append-only archive of retired feature entries (same schema). Active list + archive together are the full record; feature IDs are never reused.
 - `progress.md` — slim, bounded memory with exactly three sections: **Current State**, **Feature index**, **Cross-cutting decisions & events**.
 - `notes/AIS-NNN.md` — one note file per feature: decisions, gotchas, test results.
 - `evals/` — agent behavior evaluations (Phase 3 test matrix lives here). `traces/` — observability stub.
@@ -18,5 +19,6 @@ Work-control memory for developing the ai-skills registry.
 4. Decisions affecting more than one feature go in **Cross-cutting decisions & events** (dated, one bullet each).
 5. New work discovered mid-feature becomes a NEW feature entry — never silently expand scope.
 6. A phase is done only when its acceptance criteria pass, verified live (not assumed). Phase 3 requires the test matrix on BOTH Claude Code and Codex.
+7. When every feature in a group is `done` and the active list exceeds ~20 entries, move that group's entries to `archive/feature_list.json` and collapse their Feature-index rows into one line under **Archived groups** in `progress.md`. Never move or delete note files.
 
 Environment bootstrap: `bash init.sh` (from repo root).

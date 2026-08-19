@@ -384,12 +384,16 @@ exists, preserve its entries and IDs — only append and update statuses.
   "project": "[PROJECT_NAME]",
   "version": "0.1",
   "product_direction": "[One sentence from Q1/Q2 answers or existing README]",
+  "groups": {
+    "harness": "Stand up and evolve the agent harness"
+  },
   "features": [
     {
       "id": "[PREFIX]-001",
       "title": "Create project harness",
       "status": "done",
       "priority": "high",
+      "group": "harness",
       "description": "Initialize the harness engineering scaffold and work-control memory.",
       "acceptance_criteria": [
         "CLAUDE.md, AGENTS.md, init.sh, and .claude/settings.json exist with the chosen autonomy rules and checkpoint hooks.",
@@ -404,8 +408,9 @@ exists, preserve its entries and IDs — only append and update statuses.
 
 Feature entry schema: `id`, `title`, `status` (pending | in_progress | done),
 `priority` (high | medium | low), `description`, `acceptance_criteria`
-(verifiable, concrete), optional `recommended_before` (list of feature IDs
-this should precede).
+(verifiable, concrete), optional `group` (key into the top-level `groups`
+map — a short epic/phase/milestone name, each mapped to a one-line goal),
+optional `recommended_before` (list of feature IDs this should precede).
 
 ### harness/progress.md
 
@@ -425,9 +430,14 @@ this should precede).
 ## Cross-cutting decisions & events
 
 - YYYY-MM-DD — [dated, one bullet per decision that affects more than one feature]
+
+## Archived groups
+
+- [group] — [N] features, archived YYYY-MM-DD → archive/feature_list.json
 ```
 
-Exactly these three sections — no per-feature day-by-day detail lives here.
+Exactly these sections (Archived groups appears once something has been
+archived) — no per-feature day-by-day detail lives here.
 
 ### harness/notes/[PREFIX]-001.md
 
@@ -473,6 +483,9 @@ How agents track and control work in this repo.
   **Current State**, **Feature index**, **Cross-cutting decisions & events**.
 - `notes/[PREFIX]-NNN.md` — one note file per feature: decisions, gotchas,
   and implementation details, so agents only load what a feature needs.
+- `archive/feature_list.json` — append-only archive of retired feature
+  entries (same schema). Active list + archive together are the full
+  record; feature IDs are never reused.
 - `evals/` — agent behavior evaluations. `traces/` — observability stub.
 
 ## Update discipline
@@ -485,6 +498,10 @@ How agents track and control work in this repo.
    decisions & events** (dated, one bullet each).
 5. New work discovered mid-feature becomes a NEW feature entry — never
    silently expand scope.
+6. When every feature in a group is `done` and the active list exceeds
+   ~20 entries, move that group's entries to `archive/feature_list.json`
+   and collapse their Feature-index rows into one line under **Archived
+   groups** in `progress.md`. Never move or delete note files.
 
 Environment bootstrap: `bash init.sh`. Specs live in `docs/specs/`;
 step-by-step plans in `docs/plans/`.
