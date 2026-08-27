@@ -1,6 +1,6 @@
 ---
 name: commit
-description: Create a git commit — derive the ticket id from the branch name, run the project's lint gate, optionally group atomic commits, and confirm the message first.
+description: Create a git commit — derive the ticket ID from the branch name, run the project's verification gate, optionally group atomic commits, and commit without redundant confirmation when explicitly requested.
 ---
 
 Create a git commit with the following requirements:
@@ -52,10 +52,10 @@ Create a git commit with the following requirements:
    - Keep the first line under 72 characters when possible
    - Add detailed description in commit body if needed
 
-7. After creating the commit message, ask the user to review it with the following options:
-   - "Yes, commit this" (Recommended) - Proceed with the commit
-   - "Modify message" - Let me edit the commit message
-   - "Cancel" - Don't commit
+7. Treat an explicit request to commit as authorization to create the commit. After deriving a suitable message, stage the intended files and commit without asking the user to confirm the message again.
+   - If the user supplied an exact message, use it unless it violates a required repository convention.
+   - Ask before committing only when a material choice remains unresolved, such as an ambiguous file scope, missing required ticket ID, atomic grouping choice, or a failed verification gate.
+   - Report the final commit hash, message, and committed file scope after completion.
 
 ## Atomic Commit Examples
 
