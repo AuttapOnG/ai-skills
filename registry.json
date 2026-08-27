@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-08-19T08:09:41Z",
+  "generated_at": "2026-08-27T00:36:38Z",
   "skills": [
     {
       "name": "commit",
-      "description": "Create a git commit — derive the ticket id from the branch name, run the project's lint gate, optionally group atomic commits, and confirm the message first.",
+      "description": "Create a git commit — derive the ticket ID from the branch name, run the project's verification gate, optionally group atomic commits, and commit without redundant confirmation when explicitly requested.",
       "path": "skills/commit",
-      "updated": "2026-07-22"
+      "updated": "2026-08-27"
     },
     {
       "name": "enhance",
