@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-27T00:36:38Z",
+  "generated_at": "2026-08-28T04:42:00Z",
   "skills": [
     {
       "name": "commit",
@@ -11,61 +11,67 @@
       "name": "enhance",
       "description": "Turn a rough prompt into a detailed, context-rich prompt — classify intent, research project context and codebase, and emit a copy-paste-ready enhanced prompt.",
       "path": "skills/enhance",
-      "updated": "2026-07-22"
+      "updated": "2026-08-27"
     },
     {
       "name": "figma-to-html",
       "description": "Export a Figma design to faithful static HTML, or to a compact design-context brief for LLM codegen, by driving the Figma REST API directly — parse the share link, fetch node subtrees (never the whole file), map auto-layout to flexbox, render vectors via Figma's image endpoint, respect rate limits, and verify against Figma's own render. Use when the user pastes a figma.com/design link and wants HTML, markup, a webpage, a design brief, or asks to diagnose a wrong Figma export.",
       "path": "skills/figma-to-html",
-      "updated": "2026-07-23"
+      "updated": "2026-08-27"
     },
     {
       "name": "handoff",
       "description": "Compact the current conversation into a self-contained handoff document a fresh agent can resume from — state, decisions with reasons, pointers to artifacts instead of duplicated content, suggested skills, and a redaction pass. Use when the user wants to end a session, move work to another agent or tool, or says \"write a handoff\", \"summarize for the next session\", \"prepare a context handover\".",
       "path": "skills/handoff",
-      "updated": "2026-07-23"
+      "updated": "2026-08-27"
     },
     {
       "name": "init-harness",
       "description": "Use when initializing or upgrading a harness engineering scaffold in the current project — empty repos and projects with existing code, docs, or a partial harness alike, or when a project needs repo-local agent instructions, guardrails, and work-control memory set up.",
       "path": "skills/init-harness",
-      "updated": "2026-08-19"
+      "updated": "2026-08-27"
     },
     {
       "name": "orchestrate",
       "description": "Turn the main session into a cost-optimized dispatcher — decompose the request, route each task to the cheapest subagent tier that can do it, keep each agent's context minimal, and dispatch one at a time unless the user trades cost for speed. Use ONLY when the user explicitly asks — \"orchestrate\", \"route by cost/difficulty\", \"use the cheapest model that can handle it\", \"minimize tokens\" — never proactively.",
       "path": "skills/orchestrate",
-      "updated": "2026-08-10"
+      "updated": "2026-08-27"
     },
     {
       "name": "pr",
       "description": "Open or update a pull request — detect the ticket and base branch, create the PR, optionally link it on the issue tracker, and produce a shareable review summary.",
       "path": "skills/pr",
-      "updated": "2026-07-22"
+      "updated": "2026-08-27"
     },
     {
       "name": "self-review",
       "description": "Review your own branch changes against project standards, quality, cross-file consistency, and test coverage; present issues as a table, then auto-fix on request.",
       "path": "skills/self-review",
-      "updated": "2026-07-22"
+      "updated": "2026-08-27"
     },
     {
       "name": "skill-publisher",
       "description": "Use after creating or substantially improving a skill to offer publishing it to a shared skills registry — ask first, then audit for safety and neutrality, normalize frontmatter and footer, regenerate the registry, and open the change as a push or pull request with co-author credit.",
       "path": "skills/skill-publisher",
-      "updated": "2026-07-22"
+      "updated": "2026-08-27"
     },
     {
       "name": "skill-updater",
       "description": "Use when the user wants to check for or apply updates to skills installed from a shared skills registry, or asks whether the registry has anything new — \"update my skills\", \"are my skills up to date?\", \"any new skills in the registry?\", or any mention of syncing installed skills with their source repo. Inventories every installed skill's .provenance.json, compares against the registry's latest commits via the host's API (no clone), reports skills that are new in the registry but not yet installed, previews the commit log, and applies changes only on confirmation — never overwriting local edits.",
       "path": "skills/skill-updater",
-      "updated": "2026-07-22"
+      "updated": "2026-08-27"
+    },
+    {
+      "name": "thai-writing-style",
+      "description": "Write Thai for technical readers without translating the jargon — plain spoken sentence structure, product names and technical terms kept in their original English, never coin a Thai substitute for a term that already has an established name. Use this skill whenever a reply, report, document, commit message, or artifact will contain Thai, even for a one-line answer and even when the user never mentioned writing style. If the output has Thai in it, this skill applies.",
+      "path": "skills/thai-writing-style",
+      "updated": "2026-08-28"
     },
     {
       "name": "worklog",
       "description": "Scan git logs plus AI-assistant session logs across your repos and create dated worklog entries in your notes system (Notion shown as the example). Supports a \"sweep\" mode to find date gaps and fill missing entries.",
       "path": "skills/worklog",
-      "updated": "2026-07-22"
+      "updated": "2026-08-27"
     }
   ]
 }
