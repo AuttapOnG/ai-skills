@@ -11,7 +11,7 @@
       "name": "commit",
       "description": "Create a git commit using the current repository context, relevant verification, and a concise message without unnecessary confirmation steps.",
       "path": "skills/commit",
-      "updated": "2026-08-31"
+      "updated": "2026-08-27"
     },
     {
       "name": "enhance",
@@ -23,25 +23,25 @@
       "name": "figma-to-html",
       "description": "Export a Figma design to faithful static HTML, or to a compact design-context brief for LLM codegen, by driving the Figma REST API directly — parse the share link, fetch node subtrees (never the whole file), map auto-layout to flexbox, render vectors via Figma's image endpoint, respect rate limits, and verify against Figma's own render. Use when the user pastes a figma.com/design link and wants HTML, markup, a webpage, a design brief, or asks to diagnose a wrong Figma export.",
       "path": "skills/figma-to-html",
-      "updated": "2026-07-22"
+      "updated": "2026-07-23"
     },
     {
       "name": "handoff",
       "description": "Compact the current conversation into a self-contained handoff document a fresh agent can resume from — state, decisions with reasons, pointers to artifacts instead of duplicated content, suggested skills, and a redaction pass. Use when the user wants to end a session, move work to another agent or tool, or says \"write a handoff\", \"summarize for the next session\", \"prepare a context handover\".",
       "path": "skills/handoff",
-      "updated": "2026-07-22"
+      "updated": "2026-07-23"
     },
     {
       "name": "init-harness",
       "description": "Use when initializing or upgrading a harness engineering scaffold in the current project — empty repos and projects with existing code, docs, or a partial harness alike, or when a project needs repo-local agent instructions, guardrails, and work-control memory set up.",
       "path": "skills/init-harness",
-      "updated": "2026-07-22"
+      "updated": "2026-08-19"
     },
     {
       "name": "orchestrate",
       "description": "Turn the main session into a cost-optimized dispatcher — decompose the request, route each task to the cheapest subagent tier that can do it, keep each agent's context minimal, and dispatch one at a time unless the user trades cost for speed. Use ONLY when the user explicitly asks — \"orchestrate\", \"route by cost/difficulty\", \"use the cheapest model that can handle it\", \"minimize tokens\" — never proactively.",
       "path": "skills/orchestrate",
-      "updated": "2026-07-22"
+      "updated": "2026-08-10"
     },
     {
       "name": "pr",
