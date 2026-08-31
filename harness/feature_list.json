@@ -118,6 +118,13 @@
       "group": "phase-4",
       "title": "init-harness dogfood fixes + committed evals. From the first real-world run (design-canvas project, non-code, non-git): Q5 checkpoints now accept free-text answers with a mapping rule to compose+test a custom hook; a generation note appends a verification analog to Verification Tiers when the survey finds no test suite; Step 5 gains git init for non-git projects. Adds harness/evals/init-harness-greenfield.md and init-harness-converge.md capturing the dogfood run as baseline. Drift checks deliberately deferred (observed staleness was semantic, not structural).",
       "status": "done"
+    },
+    {
+      "id": "AIS-028",
+      "phase": 4,
+      "group": "phase-4",
+      "title": "commit skill: treat an explicit commit request as authorization to commit without asking for redundant message confirmation. Preserve prompts only for unresolved material choices such as ambiguous scope, a missing required ticket ID, atomic grouping, or a failed verification gate; report the final hash, message, and file scope.",
+      "status": "done"
     }
   ]
 }

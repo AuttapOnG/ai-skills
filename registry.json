@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-31T15:15:20Z",
+  "generated_at": "2026-08-31T15:19:24Z",
   "skills": [
     {
       "name": "agent-orchestration",
@@ -11,7 +11,7 @@
       "name": "commit",
       "description": "Create a git commit using the current repository context, relevant verification, and a concise message without unnecessary confirmation steps.",
       "path": "skills/commit",
-      "updated": "2026-08-19"
+      "updated": "2026-08-31"
     },
     {
       "name": "enhance",

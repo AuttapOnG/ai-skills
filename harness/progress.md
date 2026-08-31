@@ -2,7 +2,12 @@
 
 ## Current State
 
-**v1 COMPLETE (AIS-001→011); phase-4 follow-ups AIS-012→027.**
+**AIS-028 done locally (2026-08-27; pending push):** The `commit` skill now treats
+an explicit commit request as authorization to proceed without redundant message
+confirmation. Safety prompts remain for unresolved scope, ticket, grouping, and
+verification choices; registry and repository validation pass.
+
+**v1 COMPLETE (AIS-001→011); phase-4 follow-ups AIS-012→028.**
 AIS-012→016 done & live on main (skill-updater backfill + drift prevention, PR #3).
 AIS-017 (MIT LICENSE) + AIS-018 (README sync) done & pushed (02c670f).
 AIS-019 (README human quick-start) + AIS-020 (orchestrate) done & pushed.
@@ -49,6 +54,7 @@ residual-risk note on force-pushed-away objects (see git-identity entries below)
 | AIS-025 | init-harness grouping + archive discipline (dogfooded: v1 archived) | done | [notes/AIS-025.md](notes/AIS-025.md) |
 | AIS-026 | init-harness token-weight refactor (templates → 3 reference files) | done | [notes/AIS-026.md](notes/AIS-026.md) |
 | AIS-027 | init-harness dogfood fixes + committed evals | done | [notes/AIS-027.md](notes/AIS-027.md) |
+| AIS-028 | commit skill: no redundant message confirmation | done | [notes/AIS-028.md](notes/AIS-028.md) |
 
 ## Cross-cutting decisions & events
 
