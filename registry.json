@@ -11,7 +11,7 @@
       "name": "commit",
       "description": "Create a git commit using the current repository context, relevant verification, and a concise message without unnecessary confirmation steps.",
       "path": "skills/commit",
-      "updated": "2026-08-27"
+      "updated": "2026-08-31"
     },
     {
       "name": "enhance",
