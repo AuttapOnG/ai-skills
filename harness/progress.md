@@ -166,6 +166,15 @@ residual-risk note on force-pushed-away objects (see git-identity entries below)
   solo maintainer); historical specs/plans/notes left untouched. orchestrate's "When NOT to
   use" cross-reference reworded. Owner-side cleanup (local install + personal runtime-config
   trigger sentence) done outside this repo. Done locally; awaiting the human push.
+- 2026-08-28 — **thai-writing-style added (AIS-029).** New skill for writing Thai to technical
+  readers: ordinary spoken Thai sentence structure, but product names and technical terms stay
+  in their original English, and never coin a Thai substitute for a term that already has an
+  established name. Derived from a real architecture-review session where three successive
+  drafts were rejected — first too long and layered with finding IDs and severity chips, then
+  over-corrected by stripping out every proper noun ("simple wording is not vague wording"),
+  before the accepted version landed. Carries the specific corrections as a before/after table,
+  plus the conversational rules that came out of the same session: report edits as a two-column
+  diff, correct yourself in one line, lead with the finding that changes what the reader does.
 
 ## Archived groups
 

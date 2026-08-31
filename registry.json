@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-31T15:19:24Z",
+  "generated_at": "2026-08-31T15:40:16Z",
   "skills": [
     {
       "name": "agent-orchestration",
@@ -66,6 +66,12 @@
       "description": "Use when the user wants to check for or apply updates to skills installed from a shared skills registry, or asks whether the registry has anything new — \"update my skills\", \"are my skills up to date?\", \"any new skills in the registry?\", or any mention of syncing installed skills with their source repo. Inventories every installed skill's .provenance.json, compares against the registry's latest commits via the host's API (no clone), reports skills that are new in the registry but not yet installed, previews the commit log, and applies changes only on confirmation — never overwriting local edits.",
       "path": "skills/skill-updater",
       "updated": "2026-07-22"
+    },
+    {
+      "name": "thai-writing-style",
+      "description": "Write Thai for technical readers without translating the jargon — plain spoken sentence structure, product names and technical terms kept in their original English, never coin a Thai substitute for a term that already has an established name. Use this skill whenever a reply, report, document, commit message, or artifact will contain Thai, even for a one-line answer and even when the user never mentioned writing style. If the output has Thai in it, this skill applies.",
+      "path": "skills/thai-writing-style",
+      "updated": "2026-08-28"
     },
     {
       "name": "worklog",

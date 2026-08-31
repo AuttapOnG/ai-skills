@@ -125,6 +125,13 @@
       "group": "phase-4",
       "title": "commit skill: treat an explicit commit request as authorization to commit without asking for redundant message confirmation. Preserve prompts only for unresolved material choices such as ambiguous scope, a missing required ticket ID, atomic grouping, or a failed verification gate; report the final hash, message, and file scope.",
       "status": "done"
+    },
+    {
+      "id": "AIS-029",
+      "phase": 4,
+      "group": "phase-4",
+      "title": "thai-writing-style skill: Thai technical writing that keeps jargon in English (ไทยไม่แปลศัพท์). Plain spoken Thai sentence structure; product/technical names stay in original English; never coin a Thai substitute for an established term. Also covers: simple wording is not vague wording, name things by their address, before/after table when reporting edits, one-line corrections, lead with the finding that changes what the reader does. Derived from a real review session where three successive drafts were rejected before the style was named.",
+      "status": "done"
     }
   ]
 }
