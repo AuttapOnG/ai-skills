@@ -1,11 +1,17 @@
 {
-  "generated_at": "2026-08-27T00:36:38Z",
+  "generated_at": "2026-08-31T15:19:24Z",
   "skills": [
     {
+      "name": "agent-orchestration",
+      "description": "Route bounded work to the lowest-cost capable subagent when the saving justifies coordination, while the primary agent retains discussion, decomposition, integration, review, and final accountability.",
+      "path": "skills/agent-orchestration",
+      "updated": "2026-08-31"
+    },
+    {
       "name": "commit",
-      "description": "Create a git commit — derive the ticket ID from the branch name, run the project's verification gate, optionally group atomic commits, and commit without redundant confirmation when explicitly requested.",
+      "description": "Create a git commit using the current repository context, relevant verification, and a concise message without unnecessary confirmation steps.",
       "path": "skills/commit",
-      "updated": "2026-08-27"
+      "updated": "2026-08-31"
     },
     {
       "name": "enhance",
