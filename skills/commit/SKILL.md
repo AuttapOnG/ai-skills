@@ -1,16 +1,16 @@
 ---
 name: commit
-description: Create a git commit — derive the ticket id from the branch name, run the project's lint gate, optionally group atomic commits, and confirm the message first.
+description: Create a git commit using the current repository context, relevant verification, and a concise message without unnecessary confirmation steps.
 ---
 
 Create a git commit with the following requirements:
 
-1. Extract the ticket ID from the current branch name (e.g., AAF-31 from feat/AAF-31-streaming-callback)
+1. Extract the ticket ID from the current branch name when one exists (e.g., AAF-31 from feat/AAF-31-streaming-callback)
    - Branch pattern: `<type>/<TICKET-ID>-<description>` or `<TICKET-ID>-<description>`
    - Extract the ticket ID (e.g., AAF-31, AAF-4, etc.)
 
-2. **Run lint and format verification** before proceeding:
-   - Run the project's lint/format command if one exists — discover it from the repo (`package.json` scripts, `Makefile`, `pyproject.toml`, `.pre-commit-config.yaml`); skip if none.
+2. **Run relevant verification** before proceeding:
+   - Run only the narrowest project verification relevant to the changed files; discover it from the repo (`package.json` scripts, `Makefile`, `pyproject.toml`, `.pre-commit-config.yaml`). Do not run broad checks by default.
    - If lint fails:
      a. Try the project's discovered lint/format auto-fix command first, if one exists
      b. If still failing, show the errors and ask user whether to:
@@ -21,7 +21,7 @@ Create a git commit with the following requirements:
 
 3. Check git status and git diff to see what changes will be committed
 
-3.5. **Atomic Commit Strategy** (if multiple file types changed):
+3.5. **Atomic Commit Strategy** (only when scope is materially ambiguous or the owner requests it):
    - Analyze changed files and group them by logical changes:
      * **Core changes**: source code, configs, dependencies
      * **Tests**: test files, test configs
@@ -29,33 +29,31 @@ Create a git commit with the following requirements:
      * **Refactoring**: code improvements without functionality changes
      * **Fixes**: bug fixes separate from features
 
-   - If multiple groups exist, ask user:
-     * "Single commit" - Commit all changes together (default)
-     * "Atomic commits" - Create separate commits per logical group
-     * "Custom grouping" - Let me choose which files go together
+   - Treat the current changes as one commit by default. Do not ask about
+     grouping for one coherent change.
 
    - For atomic commits:
      * Create commit message for each group
      * Stage and commit each group separately
      * Maintain logical order (core → tests → docs)
 
-4. Create a commit message with format: `[TICKET-ID] <description>`
+4. Create a concise commit message. Use `[TICKET-ID] <description>` when a
+   ticket ID is available; otherwise omit the ticket prefix.
    - Example: `[AAF-31] Add streaming callback support`
    - The description should be clear and concise, describing what was changed
 
-5. If no ticket ID is found in the branch name, ask the user whether to:
-   - Provide a ticket ID manually
-   - Proceed without a ticket ID prefix
+5. If no ticket ID is found in the branch name and the owner did not provide
+   one, omit the ticket prefix. Do not stop to ask for a ticket ID.
 
 6. Follow git best practices:
    - Use imperative mood ("Add feature" not "Added feature")
    - Keep the first line under 72 characters when possible
    - Add detailed description in commit body if needed
 
-7. After creating the commit message, ask the user to review it with the following options:
-   - "Yes, commit this" (Recommended) - Proceed with the commit
-   - "Modify message" - Let me edit the commit message
-   - "Cancel" - Don't commit
+7. An explicit request to commit authorizes the commit. After deriving a
+   suitable message, stage the intended files and commit without asking for
+   redundant confirmation. Ask only when file scope is materially ambiguous or
+   a required verification gate fails.
 
 ## Atomic Commit Examples
 
